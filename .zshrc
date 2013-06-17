@@ -82,10 +82,10 @@ case "${TERM}" in
 if pgrep emacs >/dev/null 2>&1; then
     echo "Emacs server is already running..."
 else
-    `emacs --daemon`
+    /opt/local/bin/emacs --daemon > /dev/null
 fi
 
-alias emacs:="emacsclient -nw"
+alias emacs="emacsclient -nw"
 # lsに色をつける
 case "${OSTYPE}" in
     darwin*)
