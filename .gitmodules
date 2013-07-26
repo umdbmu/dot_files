@@ -1,0 +1,3 @@
+[submodule ".emacs.d"]
+	path = .emacs.d
+	url = /Users/Umeda/.emacs.d/
