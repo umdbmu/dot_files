@@ -1,11 +1,11 @@
-;;SKKを追加する
-(require 'skk-autoloads)
-(global-set-key (kbd "M-j") 'skk-mode)
-(global-set-key "\C-cj" 'skk-auto-fill-mode)
-;(global-set-key "\C-xt" 'skk-tutorial)
-(setq skk-preload t)
-;; DDSKKのディレクトリを変更する
-(setq skk-user-directory "~/.emacs.d/elisp/.ddskk")
+;; ;;SKKを追加する
+;; (require 'skk-autoloads)
+;; (global-set-key (kbd "M-j") 'skk-mode)
+;; (global-set-key "\C-cj" 'skk-auto-fill-mode)
+;; ;(global-set-key "\C-xt" 'skk-tutorial)
+;; (setq skk-preload t)
+;; ;; DDSKKのディレクトリを変更する
+;; (setq skk-user-directory "~/.emacs.d/elisp/.ddskk")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;ローマ字のまま日本語をインクリメンタルサーチする	   ;;
@@ -30,8 +30,7 @@
 ;; yasnippetの設定をする
 (require 'yasnippet)
 (setq yas-snippet-dirs
-      '("~/.emacs.d/share/mysnippets"
-	))
+      '("~/.emacs.d/share/mysnippets"))
 (yas-global-mode 1)
 ;; 単語展開キーバインド
 (custom-set-variables
