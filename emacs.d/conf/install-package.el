@@ -30,11 +30,11 @@
       popwin
       shell-pop
       go-mode
-      go-autocomplete
-      popup
       auto-complete
+      go-autocomplete
       flymake
       flymake-go
+      twittering-mode
       ))
 
 (let ((not-installed (loop for x in installing-package-list
