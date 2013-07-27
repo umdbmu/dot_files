@@ -20,6 +20,7 @@
       smart-compile
       yasnippet
       gtags
+      helm-gtags
       direx
       window-layout
       e2wm
