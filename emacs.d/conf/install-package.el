@@ -31,7 +31,7 @@
       shell-pop
       go-mode
       auto-complete
-      go-autocomplete
+      ;go-autocomplete
       flymake
       flymake-go
       twittering-mode

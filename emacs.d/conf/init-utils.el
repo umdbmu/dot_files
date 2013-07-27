@@ -92,3 +92,6 @@
 
 ;; ポモドーロタイマーを使う
 ; (require 'pomodoro)
+
+;; C-x bでミニバッファにバッファ候補を表示
+(iswitchb-mode t)
