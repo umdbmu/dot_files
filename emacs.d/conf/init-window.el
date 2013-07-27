@@ -44,34 +44,10 @@
 ;(setq display-buffer-alist 'popwin:display-buffer)
 (push '("*Buffer List*" :position left :width 50) popwin:special-display-config)
 (push '("*dvi-preview") popwin:special-display-config)
+(push '("*multi-term*" :position bottom :width 50) popwin:special-display-config)
 (push '(":home" :position left :width 50) popwin:special-display-config)
 (push '("*YaTeX-typesetting*" :position left :width 50) popwin:special-display-config)
 ;(push '("*shell*") popwin:special-display-config)
-
-;; (require 'e2wm-vcs)
-;; (e2wm:add-keymap
-;;  e2wm:pst-minor-mode-keymap
-;;  '(("<M-left>". e2wm:dp-code)		;code-mode
-;;    ("<M-right>". e2wm:dp-two)		;two-mode
-;;    ("<M-up>". e2wm:dp-doc)		;doc-mode
-;;    ("<M-down>".e2wm:dp-dashboard)	;dashboard-mode
-;;    ("<M-*>". e2wm:dp-magit)
-;;    ) e2wm:prefix-key)
-;; (require 'e2wm)
-
-; (global-set-key (kbd "M-+") 'e2wm:start-management)
-;; (custom-set-variables
-;;  ;; custom-set-variables was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(magit-git-executable "C:/Program Files (x86)/Git/bin/git.exe"))
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  )
 
 ;; îzêFåàíË
 ;; version24à»ç~ÇÕcustomize-themeÇégÇ§
@@ -102,9 +78,8 @@
      (set-face-foreground 'fringe "NavajoWhite4")
      ;; óºòeÇÃÉoÅ[ÇÃîwåiêF
      (set-face-background 'fringe "NavajoWhite4"))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   ))
+  (custom-set-variables
+   '(ansi-color-names-vector ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
+   '(custom-enabled-themes (quote (manoj-dark)))
+   '(custom-safe-themes (quote ("6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
+  )

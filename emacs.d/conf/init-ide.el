@@ -1,6 +1,3 @@
-;; 各種言語の設定を行う
-(load "init-lang")
-
 ;; タグジャンプを使用可能にする
 (require 'gtags nil t)
 (setq gtags-suggested-key-mapping t)
@@ -20,7 +17,7 @@
 ;; 	     (gtags-make-complete-list)
 ;; 	     ))
 
-;; プロジェクト管理にする (not バージョン管理)
+;; プロジェクト管理する
 (require 'eproject)
 (push '(eproject) popwin:special-display-config)
 
@@ -29,9 +26,12 @@
 
 ;; 自動補完
  (require 'auto-complete)
- (global-auto-complete-mode t)
+(global-auto-complete-mode t)
 ;; (define-key ac-complete-mode-map (kbd "C-n") 'ac-next)
 ;; (define-key ac-complete-mode-map (kbd "C-p") 'ac-previous)
 
 ;; flymakeの設定
 (load "init-flymake")
+
+;; 各種言語の設定を行う
+(load "init-lang")

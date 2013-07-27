@@ -1,3 +1,5 @@
+;; find-fileをC-x C-fから変更
+(global-set-key (kbd "C-x f") 'find-file)
 ;; C-wでコピー
 (global-set-key (kbd "C-w") 'backward-kill-word)
 ;; C-c wで切取り
@@ -22,3 +24,6 @@
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
 ;; コメントアウトの設定を変更する
 ;; box, box-multi, multi-line, extra-line, aligned, default が存在する
+
+;; C-kで行全体を削除
+(setq kill-whole-line t)
