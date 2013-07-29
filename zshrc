@@ -103,3 +103,5 @@ case "${OSTYPE}" in
 	alias la='ls -la --color'
 	;;
 esac
+
+export EDITOR=emacs

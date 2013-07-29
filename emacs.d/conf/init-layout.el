@@ -39,16 +39,6 @@
 (setq hl-line-face 'my-hl-line-face)
 (global-hl-line-mode t)
 
-;; popwin‚Ìİ’è
-(require 'popwin)
-;(setq display-buffer-alist 'popwin:display-buffer)
-(push '("*Buffer List*" :position left :width 50) popwin:special-display-config)
-(push '("*dvi-preview") popwin:special-display-config)
-(push '("*multi-term*" :position bottom :width 50) popwin:special-display-config)
-(push '(":home" :position left :width 50) popwin:special-display-config)
-(push '("*YaTeX-typesetting*" :position left :width 50) popwin:special-display-config)
-;(push '("*shell*") popwin:special-display-config)
-
 ;; ”zFŒˆ’è
 ;; version24ˆÈ~‚Ícustomize-theme‚ğg‚¤
 (if (< emacs-major-version 24)
@@ -82,4 +72,4 @@
    '(ansi-color-names-vector ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
    '(custom-enabled-themes (quote (manoj-dark)))
    '(custom-safe-themes (quote ("6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
-  )
+   ))

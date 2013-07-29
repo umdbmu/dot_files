@@ -12,32 +12,31 @@
 
 (add-to-load-path "elisp" "conf" "public_repos" "info" "share" "elpa")
 
-;; 依存関係を解決する
-(load "install-package")
-
-;; 便利設定をまとめて読み込む
-(load "init-utils")
-
 ;; 見た目の設定をする
-(load "init-window")
+(load "init-layout")
+
+(when (>= emacs-major-version 24)
+  ;; 設定に必要なパッケージのインストール
+  (load "install-package")
+
+  ;; 便利設定をまとめて読み込む
+  (load "init-utils")
+
+  ;; shellの設定
+  (load "init-shell")
+
+  ;; 入力関係
+  (load "init-input")
+
+  ;; 開発環境を整える
+  (load "init-ide")
+
+  ;; web周りを整える
+  (load "init-web") 
+  )
 
 ;; 通常のkey割り当てを変更する
 (load "init-keymap")
-
-;; anything の設定をする
-(load "init-anything")
-
-;; shellの設定
-(load "init-shell")
-
-;; 入力関係
-(load "init-input")
-
-;; 開発環境を整える
-(load "init-ide")
-
-;; web周りを整える
-(load "init-web")
 
 ;; Windowsの場合のファイル名の変更
 (when (eq window-system 'w32)
