@@ -1,0 +1,9 @@
+[submodule "emacs.d/public_repos/Ricty"]
+	path = emacs.d/public_repos/Ricty
+	url = https://github.com/yascentur/Ricty.git
+[submodule "emacs.d/public_repos/yatex"]
+	path = emacs.d/public_repos/yatex
+	url = https://github.com/emacsmirror/yatex.git
+[submodule "emacs.d/public_repos/replace-colorthemes"]
+	path = emacs.d/public_repos/replace-colorthemes
+	url = https://github.com/emacs-jp/replace-colorthemes
