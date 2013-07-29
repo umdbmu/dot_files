@@ -12,7 +12,11 @@
 (defvar installing-package-list
     '(
       ;; 使用しているパッケージ
+      auto-async-byte-compile
       magit
+      gist
+      helm-gist
+      helm-ls-git
       anything
       undo-tree
       undohist
@@ -32,9 +36,9 @@
       shell-pop
       go-mode
       auto-complete
-      ;go-autocomplete
       flymake
       flymake-go
+      helm-flymake
       twittering-mode
       ))
 

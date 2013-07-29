@@ -1,5 +1,5 @@
 ;; タグジャンプを使用可能にする
-(require 'gtags nil t)
+(require 'gtags)
 (require 'helm-gtags)
 (setq gtags-suggested-key-mapping t)
 ;; 関数の定義元へ移動
@@ -42,6 +42,10 @@
 
 ;; gitフロントエンドを使用する
 (require 'magit)
+(require 'helm-ls-git)
+(require 'helm-gist)
+
+(global-set-key (kbd "C-x C-g") 'helm-ls-git-ls)
 
 ;; 自動補完
  (require 'auto-complete)
@@ -51,6 +55,9 @@
 
 ;; flymakeの設定
 (load "init-flymake")
+
+;; デバッカの設定
+(load "init-gdb")
 
 ;; 各種言語の設定を行う
 (load "init-lang")

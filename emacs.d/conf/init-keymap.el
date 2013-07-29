@@ -1,5 +1,5 @@
 ;; find-fileをC-x C-fから変更
-(global-set-key (kbd "C-x f") 'find-file)
+;(global-set-key (kbd "C-x f") 'find-file)
 ;; C-wでコピー
 (global-set-key (kbd "C-w") 'backward-kill-word)
 ;; C-c wで切取り
