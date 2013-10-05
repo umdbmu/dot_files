@@ -2,7 +2,7 @@
 ;; GUIの警告は表示しない
 (setq flymake-gui-warnings-enabled nil)
 ;; 全てのファイルでflymakeを有効化
-					;(add-hook 'find-file-hook 'flymake-find-file-hook)
+(add-hook 'find-file-hook 'flymake-find-file-hook)
 ;; M-p/M-nで警告/エラー行の移動
 (global-set-key (kbd "M-p") 'flymake-goto-prev-error)
 (global-set-key (kbd "M-n") 'flymake-goto-next-error)
@@ -18,19 +18,6 @@
 (ad-activate 'flymake-goto-prev-error 'flymake-goto-prev-error-display-message)
 (ad-activate 'flymake-goto-next-error 'flymake-goto-next-error-display-message)
 
-;;c++のflymakeでmakefileを不要にする
-(defun flymake-cc-init ()
-  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
-		       'flymake-create-temp-inplace))
-	 (local-file  (file-relative-name
-		       temp-file
-		       (file-name-directory buffer-file-name))))
-    (list "g++" (list "-Wall" "-Wextra" "-fsyntax-only" "-fopenmp" local-file))))
-
-(push '("\\.cc$" flymake-cc-init) flymake-allowed-file-name-masks)
-(push '("\\.cpp$" flymake-cc-init) flymake-allowed-file-name-masks)
-(push '("\\.h$" flymake-cc-init) flymake-allowed-file-name-masks)
-(push '("\\.hpp$" flymake-cc-init) flymake-allowed-file-name-masks)
 ;; ;; popup.elを使ってtipとして表示する
 ;; (defun my-flymake-display-err-popup.el-for-current-line ()
 ;;   "Display a menu with errors/warnings for current line if it has errors and/or warnings."
