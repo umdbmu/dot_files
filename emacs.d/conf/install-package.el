@@ -39,6 +39,7 @@
       flymake
       flymake-go
       helm-flymake
+      processing-mode
       twittering-mode
       ))
 

@@ -17,6 +17,7 @@
     ""))
 (add-to-list 'mode-line-format
 	     '(:eval (count-lines-and-chars)))
+(add-to-list 'custom-theme-load-path "~/.emacs.d/public_repos/replace-colorthemes")
 
 ;; 画面下に時刻を表示
 (display-time)
@@ -41,7 +42,7 @@
 
 ;; 配色決定
 ;; version24以降はcustomize-themeを使う
-(if (< emacs-major-version 24)
+(if (< emacs-major-version 23)
     (
      ;; 文字の色を設定
      (set-foreground-color "black")
@@ -72,4 +73,5 @@
    '(ansi-color-names-vector ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
    '(custom-enabled-themes (quote (manoj-dark)))
    '(custom-safe-themes (quote ("6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
-   ))
+   )
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/public_repos/replace-colorthemes"))
