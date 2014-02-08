@@ -19,8 +19,8 @@
 	 (local-file  (file-relative-name
 		       temp-file
 		       (file-name-directory buffer-file-name))))
-    (list "mpicc" (list "-Wall" "-fopenmp" "-fsyntax-only" local-file))
-;    (list "g++" (list "-Wall" "-Wextra" "-fsyntax-only" "-fopenmp" local-file))
+;    (list "mpicc" (list "-Wall" "-fopenmp" "-fsyntax-only" local-file))
+    (list "g++" (list "-Wall" "-Wextra" "-fsyntax-only" "-fopenmp" local-file))
     ))
 
 (push '("\\.cpp$" flymake-c++-init) flymake-allowed-file-name-masks)

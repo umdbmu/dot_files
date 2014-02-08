@@ -45,7 +45,7 @@
 ;; Go ;;
 ;;;;;;;;
 ;; go言語の設定をする
-(load "init-go")
+;(load "init-go")
 
 ;;;;;;;;;;;;
 ;; python ;;
