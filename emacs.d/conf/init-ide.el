@@ -15,7 +15,6 @@
  (require 'auto-complete)
 (global-auto-complete-mode t)
 ;; (define-key ac-complete-mode-map (kbd "C-n") 'ac-next)
-;; (define-key ac-complete-mode-map (kbd "C-p") 'ac-previous)
 
 ;; flymakeの設定
 (load "init-flymake")
