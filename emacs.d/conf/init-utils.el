@@ -21,7 +21,8 @@
   (global-set-key (kbd "M-y") 'helm-show-kill-ring)
   (global-set-key (kbd "C-x b") 'electric-buffer-list)
 
-  (helm-mode 1))
+  (helm-mode 1)
+  (add-to-list 'helm-completing-read-handlers-alist '(find-file . nil)))
 
 ;; undohistの設定
 (when (require 'undohist nil t)
