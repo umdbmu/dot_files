@@ -41,6 +41,8 @@
       helm-flymake
       processing-mode
       twittering-mode
+      ;; http-post-simple
+      ;; org-toodledo
       ))
 
 (let ((not-installed (loop for x in installing-package-list
