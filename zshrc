@@ -79,15 +79,18 @@ case "${TERM}" in
     esac
 
 # zshの初回起動時にemacs daemon を立ち上げる
-case "${OSTYPE}" in
-    darwin*)
 	if pgrep emacs >/dev/null 2>&1; then
 	    echo "Emacs server is already running..."
 	else
-	    /opt/local/bin/emacs --daemon > /dev/null
+		case "${OSTYPE}" in
+		    darwin*)
+			/opt/local/bin/emacs --daemon
+			;;
+		linux*)
+			/usr/bin/emacs --daemon
+			;;
+		esac
 	fi
-	;;
-esac
 
 alias emacs="emacsclient -nw"
 # lsに色をつける
