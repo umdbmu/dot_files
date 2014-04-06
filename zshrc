@@ -108,3 +108,8 @@ case "${OSTYPE}" in
 esac
 
 export EDITOR=emacs
+
+# hubコマンドを利用する
+if [ -x "`which hub 2> /dev/null`" ]; then
+   alias git=hub
+fi
