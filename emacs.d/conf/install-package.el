@@ -41,6 +41,7 @@
       helm-flymake
       processing-mode
       twittering-mode
+      js2-mode
       ;; http-post-simple
       ;; org-toodledo
       ))
