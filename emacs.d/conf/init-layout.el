@@ -37,6 +37,7 @@
 (show-paren-mode t)
 ;; paren‚ÌƒXƒ^ƒCƒ‹
 (setq show-paren-style 'expression)
+(set-face-background 'show-paren-match-face "pink")
 (setq hl-line-face 'my-hl-line-face)
 (global-hl-line-mode t)
 
