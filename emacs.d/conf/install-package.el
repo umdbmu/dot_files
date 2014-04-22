@@ -20,7 +20,8 @@
       anything
       undo-tree
       undohist
-      flex-autopair
+      ;; flex-autopair
+      smartparens
       smart-compile
       yasnippet
       gtags
@@ -42,6 +43,8 @@
       processing-mode
       twittering-mode
       js2-mode
+      git-rebase-mode
+      git-commit-mode
       ;; http-post-simple
       ;; org-toodledo
       ))

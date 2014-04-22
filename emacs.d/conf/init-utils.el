@@ -30,7 +30,9 @@
 
 ;; undo-treeモードの設定
 (when (require 'undo-tree nil t)
-    (global-undo-tree-mode))
+  (global-undo-tree-mode)
+  (global-set-key (kbd "M-/") 'undo-tree-redo)
+  )
 
 (defun split-window-vertically-n (num_wins)
     (interactive "p")
