@@ -22,7 +22,9 @@
       undohist
       ;; flex-autopair
       smartparens
+      org-toodledo
       smart-compile
+      http-post-simple
       yasnippet
       gtags
       helm-gtags
