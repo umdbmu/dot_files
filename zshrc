@@ -1,3 +1,4 @@
+LANG="ja_JP.UTF-8"
 autoload -U compinit
 compinit
 setopt prompt_subst
@@ -78,6 +79,19 @@ case "${TERM}" in
 	        ;;
     esac
 
+
+# hubコマンドを利用する
+if [ -x "`which hub 2> /dev/null`" ]; then
+   alias git=hub
+fi
+
+# for go lang
+if [ -x "`which go`" ]; then
+   export GOROOT=`go env GOROOT`
+   export GOPATH=$HOME/go
+   export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+fi    
+
 # zshの初回起動時にemacs daemon を立ち上げる
 	if pgrep emacs >/dev/null 2>&1; then
 	    echo "Emacs server is already running..."
@@ -109,7 +123,4 @@ esac
 
 export EDITOR=emacs
 
-# hubコマンドを利用する
-if [ -x "`which hub 2> /dev/null`" ]; then
-   alias git=hub
-fi
+export TERM=xterm-256color
