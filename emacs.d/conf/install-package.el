@@ -13,6 +13,8 @@
     '(
       ;; 使用しているパッケージ
       auto-async-byte-compile
+      git-rebase-mode
+      git-commit-mode
       magit
       gist
       helm-gist
@@ -45,8 +47,6 @@
       processing-mode
       twittering-mode
       js2-mode
-      git-rebase-mode
-      git-commit-mode
       ;; http-post-simple
       ;; org-toodledo
       ))
