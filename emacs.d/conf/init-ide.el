@@ -22,9 +22,10 @@
 ;; 20行分補完メニューを表示する
 (setq ac-menu-height 20)
 (set-face-background 'ac-selection-face "lightgray")
-(set-face-foreground 'ac-selection-face "red")
+(set-face-foreground 'ac-selection-face "white")
 (set-face-foreground 'ac-candidate-face "steelblue")
 (set-face-background 'ac-selection-face "pink")
+(set-face-background 'ac-candidate-face "black")
 ;; 曖昧検索を有効にする
 (setq ac-fuzzy-cursor-color t)
 ;; 補完対象に大文字が含まれる場合のみ区別する
@@ -45,6 +46,7 @@
 
 ;; todo管理にtoodledoを使う
 (require 'org-toodledo)
+(setq org-toodledo-userid "td52936bb3c28b4")
 
 ;; Useful key bindings for org-mode
 (add-hook 'org-mode-hook
@@ -60,3 +62,4 @@
 	    (local-set-key "\C-od" 'org-toodledo-agenda-mark-task-deleted)
 	    )
 	  )
+(setq org-toodledo-folder-support-mode 'heading)
