@@ -2,7 +2,21 @@
 (tabbar-mwheel-mode -1)
 (mouse-wheel-mode -1)
 
-(tabbar-mode 1)
+(tabbar-mode t)
+
+;; 同じフォルダ上にあるバッファのみタブに表示する
+(setq tabbar-cycle-scope 'tabs)
+(setq tabbar-buffer-groups-function
+      (lambda ()
+	(let ((dir (expand-file-name default-directory)))
+	  (cond ((member (buffer-name) '("*Completions*"
+					 "*scratch*"
+					 "*Messages*"
+					 "*Ediff Registry*"))
+		 (list "#misc"))
+		((string-match-p "/.emacs.d/" dir)
+		 (list ".emacs.d"))
+		(t (list dir))))))
 
 ;; グループ化しない
 (setq tabbar-buffer-groups-function nil)
@@ -26,13 +40,13 @@
 (set-face-attribute
  'tabbar-unselected nil
  :background "brightblack"
- :foreground "magenta"
+ :foreground "white"
  :height 0.6
  :box nil)
 (set-face-attribute
  'tabbar-selected nil
- :background "brightblue"
- :foreground "white"
+ :background "color-203"
+ :foreground "#fff"
  :box t)
 ;; (set-face-attribute
 ;;  'tabbar-button nil
