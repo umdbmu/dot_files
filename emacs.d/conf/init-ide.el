@@ -1,6 +1,9 @@
 ;; タグジャンプを使用可能にする
 (load "init-tag")
 
+;; tabbarを利用する
+(load "init-tabbar")
+
 ;; プロジェクト管理する
 (require 'eproject)
 
@@ -24,7 +27,7 @@
 (set-face-background 'ac-selection-face "lightgray")
 (set-face-foreground 'ac-selection-face "white")
 (set-face-foreground 'ac-candidate-face "steelblue")
-(set-face-background 'ac-selection-face "pink")
+(set-face-background 'ac-selection-face "red")
 (set-face-background 'ac-candidate-face "black")
 ;; 曖昧検索を有効にする
 (setq ac-fuzzy-cursor-color t)
@@ -44,22 +47,5 @@
 ;; 各種言語の設定を行う
 (load "init-lang")
 
-;; todo管理にtoodledoを使う
-(require 'org-toodledo)
-(setq org-toodledo-userid "td52936bb3c28b4")
-
-;; Useful key bindings for org-mode
-(add-hook 'org-mode-hook
-	  (lambda ()
-	    (local-unset-key "\C-o")
-	    (local-set-key "\C-od" 'org-toodledo-mark-task-deleted)
-	    (local-set-key "\C-os" 'org-toodledo-sync)
-	    )
-	  )
-(add-hook 'org-agenda-mode-hook
-	  (lambda ()
-	    (local-unset-key "\C-o")
-	    (local-set-key "\C-od" 'org-toodledo-agenda-mark-task-deleted)
-	    )
-	  )
-(setq org-toodledo-folder-support-mode 'heading)
+(require 'powerline)
+(powerline-default-theme)
