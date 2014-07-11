@@ -19,10 +19,10 @@
       gist
       helm-gist
       helm-ls-git
-      anything
+      ;; anything
+      anzu
       undo-tree
       undohist
-      ;; flex-autopair
       smartparens
       org-toodledo
       smart-compile
@@ -45,8 +45,9 @@
       flymake-go
       helm-flymake
       processing-mode
-      twittering-mode
       js2-mode
+      tabbar
+      powerline
       ;; http-post-simple
       ;; org-toodledo
       ))

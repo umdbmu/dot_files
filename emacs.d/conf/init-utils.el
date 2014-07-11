@@ -128,7 +128,7 @@
 (push '("*multi-term*" :position bottom :width 50) popwin:special-display-config)
 (push '(":home" :position left :width 50) popwin:special-display-config)
 (push '("*YaTeX-typesetting*" :position left :width 50) popwin:special-display-config)
-(push '(" *auto-async-byte-compile*" :height 14 :position bottom :noselect t) popwin:special-display-config)
+(push '("*auto-async-byte-compile*" :height 14 :position bottom :noselect t) popwin:special-display-config)
 (push '("*VC-log*" :height 10 :position bottom) popwin:special-display-config)
 (push '("eproject" :height 10 :position bottom) popwin:special-display-config)
 ;(push '(" *auto-async-byte-compile*" :position bottom :width 50 :noselect t) popwin:special-display-config)

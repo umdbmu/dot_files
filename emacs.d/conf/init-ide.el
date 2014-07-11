@@ -48,4 +48,4 @@
 (load "init-lang")
 
 (require 'powerline)
-(powerline-default-theme)
+(powerline-custome-theme)
