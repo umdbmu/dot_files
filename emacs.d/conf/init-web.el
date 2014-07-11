@@ -1,6 +1,6 @@
 ;; ;; twittering-modeを使う
-(require 'twittering-mode)
-(setq twittering-use-master-password t)
+;; (require 'twittering-mode)
+;; (setq twittering-use-master-password t)
 
 ; (require 'w3m-load)
 

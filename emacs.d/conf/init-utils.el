@@ -73,9 +73,13 @@
 ;; (require 'desktop)
 ;; (desktop-save-mode 1)
 
-;; auto-pairを利用する
-(require 'flex-autopair)
-(flex-autopair-mode 1)
+;; ;; auto-pairを利用する
+;; (require 'flex-autopair)
+;; (flex-autopair-mode 1)
+
+;; smartparens を利用する
+(require 'smartparens-config)
+(smartparens-global-mode t)
 
 ;; smart-compileを読み込む
 (require 'smart-compile)
