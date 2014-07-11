@@ -26,9 +26,6 @@
 ;; 画面下に現在の関数名を表示する
 (which-function-mode 1)
 
-;; tabbarの設定をする
-; (load "init-tabbar")
-
 (if (fboundp 'set-scroll-bar-mode) (set-scroll-bar-mode nil))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -37,7 +34,7 @@
 (show-paren-mode t)
 ;; parenのスタイル
 (setq show-paren-style 'expression)
-(set-face-background 'show-paren-match-face "pink")
+(set-face-background 'show-paren-match-face "blue")
 (setq hl-line-face 'my-hl-line-face)
 (global-hl-line-mode t)
 
@@ -71,8 +68,12 @@
      ;; 両脇のバーの背景色
      (set-face-background 'fringe "NavajoWhite4"))
   (custom-set-variables
-   '(ansi-color-names-vector ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
-   '(custom-enabled-themes (quote (manoj-dark)))
-   '(custom-safe-themes (quote ("6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
+   ;; (require 'ansi-color)
+   ;; (defun display-ansi-colors ()
+   ;;     (interactive)eJd
+   ;;       (ansi-color-apply-on-region (point-min) (point-max)))
+   ;; '(ansi-color-names-vector ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
+   '(custom-enabled-themes (quote (tango-dark)))
+   ;; '(custom-safe-themes (quote ("6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
    )
   (add-to-list 'custom-theme-load-path "~/.emacs.d/public_repos/replace-colorthemes"))
