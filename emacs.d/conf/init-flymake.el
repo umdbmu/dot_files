@@ -2,7 +2,7 @@
 ;; GUIの警告は表示しない
 (setq flymake-gui-warnings-enabled nil)
 ;; 全てのファイルでflymakeを有効化
-(add-hook 'find-file-hook 'flymake-find-file-hook)
+1;5n(add-hook 'find-file-hook 'flymake-find-file-hook)
 ;; M-p/M-nで警告/エラー行の移動
 (global-set-key (kbd "M-p") 'flymake-goto-prev-error)
 (global-set-key (kbd "M-n") 'flymake-goto-next-error)

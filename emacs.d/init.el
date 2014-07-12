@@ -26,13 +26,13 @@
   (load "init-shell")
 
   ;; 入力関係
-  (load "init-input")
+  ;; (load "init-input")
 
   ;; 開発環境を整える
   (load "init-ide")
 
   ;; web周りを整える
-  (load "init-web") 
+  ;(load "init-web") 
   )
 
 ;; 通常のkey割り当てを変更する
@@ -42,3 +42,24 @@
 (when (eq window-system 'w32)
   (set-file-name-coding-system 'cp932)
   (setq locale-coding-system 'cp932))
+;; (custom-set-variables
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(ansi-color-names-vector ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
+;;  '(anzu-deactivate-region t)
+;;  '(anzu-mode-lighter "")
+;;  '(anzu-replace-to-string-separator " => ")
+;;  '(anzu-search-threshold 1000)
+;;  '(custom-safe-themes (quote ("6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
+;;  '(shell-pop-shell-type (quote ("multi-term" "*multi-term*" (lambda nil (multi-term)))))
+;;  '(shell-pop-window-height 25)
+;;  '(shell-pop-window-position "bottom")
+;;  '(yas-trigger-key "TAB"))
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  )

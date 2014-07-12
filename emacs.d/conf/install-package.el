@@ -13,38 +13,40 @@
     '(
       ;; 使用しているパッケージ
       auto-async-byte-compile
-      git-rebase-mode
-      git-commit-mode
+      ;; git-rebase-mode
+      ;; git-commit-mode
       magit
-      gist
-      helm-gist
-      helm-ls-git
+      helm
+      ;; gist
+      ;; helm-gist
+      ;; helm-ls-git
       ;; anything
       anzu
       undo-tree
       undohist
       smartparens
-      org-toodledo
+      ;; org-toodledo
       smart-compile
-      http-post-simple
-      yasnippet
-      gtags
-      helm-gtags
+      ;; http-post-simple
+      ;; yasnippet
+      ;; gtags
+      ;; helm-gtags
       direx
-      window-layout
-      e2wm
-      e2wm-bookmark
+      ;; window-layout
+      ;; e2wm
+      ;; e2wm-bookmark
       multi-term
       lib-requires
-      eproject
+      ;; eproject
       popwin
       shell-pop
       go-mode
+      go-autocomplete
       auto-complete
-      flymake
-      flymake-go
-      helm-flymake
-      processing-mode
+      ;; flymake
+      ;; flymake-go
+      ;; helm-flymake
+      ;; processing-mode
       js2-mode
       tabbar
       powerline
