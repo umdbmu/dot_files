@@ -1,18 +1,15 @@
 ;; タグジャンプを使用可能にする
-(load "init-tag")
-
-;; tabbarを利用する
-(load "init-tabbar")
+;(load "init-tag")
 
 ;; プロジェクト管理する
-(require 'eproject)
+;(require 'eproject)
 
 ;; gitフロントエンドを使用する
 (require 'magit)
-(require 'helm-ls-git)
-(require 'helm-gist)
+;; (require 'helm-ls-git)
+;; (require 'helm-gist)
 
-(global-set-key (kbd "C-x C-d") 'helm-ls-git-ls)
+;(global-set-key (kbd "C-x C-d") 'helm-ls-git-ls)
 
 ;; 自動補完
  (require 'auto-complete)
@@ -39,13 +36,10 @@
 ;(setq ac-dwin t)
 
 ;; flymakeの設定
-(load "init-flymake")
+;(load "init-flymake")
 
 ;; デバッカの設定
-(load "init-gdb")
+;(load "init-gdb")
 
 ;; 各種言語の設定を行う
 (load "init-lang")
-
-(require 'powerline)
-(powerline-custome-theme)

@@ -1,7 +1,7 @@
 ;;;;;;;
 ;; c ;;
 ;;;;;;;
-(load "init-cc")
+;(load "init-cc")
 
  ;;;;;;;;;;;;;;
  ;; Markdown ;;

@@ -34,6 +34,7 @@
   (global-set-key (kbd "M-/") 'undo-tree-redo)
   )
 
+;; window を縦に二分割する
 (defun split-window-vertically-n (num_wins)
     (interactive "p")
       (if (= num_wins 2)
@@ -42,6 +43,7 @@
 	            (split-window-vertically
 		            (- (window-height) (/ (window-height) num_wins)))
 		          (split-window-vertically-n (- num_wins 1)))))
+;; window を横に二分割する
 (defun split-window-horizontally-n (num_wins)
     (interactive "p")
       (if (= num_wins 2)
@@ -50,7 +52,7 @@
 	            (split-window-horizontally
 		            (- (window-width) (/ (window-width) num_wins)))
 		          (split-window-horizontally-n (- num_wins 1)))))
-
+;; 現在の画面サイズに応じてどのように分割するか決める
 (defun other-window-or-split ()
     (interactive)
       (when (one-window-p)
@@ -69,14 +71,6 @@
         (cons (cons "\\.*$" (expand-file-name "~/.emacs.d/backup"))
 	          backup-directory-alist))
 
-;; 終了時の状態を保存
-;; (require 'desktop)
-;; (desktop-save-mode 1)
-
-;; ;; auto-pairを利用する
-;; (require 'flex-autopair)
-;; (flex-autopair-mode 1)
-
 ;; smartparens を利用する
 (require 'smartparens-config)
 (smartparens-global-mode t)
@@ -86,36 +80,13 @@
 (autoload 'smart-compile "smart-compile" "when compiling")
 (global-set-key (kbd "C-c c") 'smart-compile)
 
-;; ;; hownメモ保存の場所
-;; (setq howm-directory(concat user-emacs-directory "howm"))
-;; ;; hown-menuの言語を日本語に
-;; (setq howm-menu-lang 'ja)
-;; ;; hownメモを一日1ファイルにする
-;; (setq howm-file-name-format "%Y/%m%Y-%m-%d.howm")
-;; ;; honw-modeを読み込む
-;; (when (require 'howm-mode nil t)
-;;   ;; C-c,, でhown-meneを起動
-;;   (define-key global-map (kbd "C-c ,,") 'howm-menu))
-;; ;; howmメモを保存と同時に閉じる
-;; (defun howm-save-buffer-and-kill()
-;;   (interactive)
-;;   (when (and (buffer-file-name)
-;; 	     (string-match "\\.howm" (buffer-file-name)))
-;;     (save-buffer)
-;;     (kill-buffer nil)))
-;; ;; C-c C-cでメモの保存と同時にバッファを閉じる
-;; (define-key howm-mode-map (kbd "C-c C-c") 'howm-save-buffer-and-kill)
-
 ;; 拡張版diredを使用する
-; (require 'direx)
+(require 'direx)
 
 ;; ポモドーロタイマーを使う
 ; (require 'pomodoro)
 
-;; C-x bでミニバッファにバッファ候補を表示
-;(iswitchb-mode t)
-
-;; auto-async-byte-compile
+;; elファイル保存時にauto-async-byte-compileを実行する
 (require 'auto-async-byte-compile)
 (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 
