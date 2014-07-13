@@ -1,8 +1,8 @@
+(require 'tabbar)
+(tabbar-mode t)
 ;; タブ上でマウスホイール操作無効
 (tabbar-mwheel-mode -1)
 (mouse-wheel-mode -1)
-
-(tabbar-mode t)
 
 ;; 同じフォルダ上にあるバッファのみタブに表示する
 (setq tabbar-cycle-scope 'tabs)

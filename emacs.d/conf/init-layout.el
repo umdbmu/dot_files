@@ -56,4 +56,4 @@
 (load "init-powerline")
 
 ;; tabbar‚ð—˜—p‚·‚é
-(load "init-tabbar")
+;(load "init-tabbar")
