@@ -26,12 +26,32 @@
 ;;;;;;;;;
 ;; org-modeでソースコードの挿入を綺麗にする
 (setq org-src-fontify-natively t)
-;; TODO状態
-(setq org-todo-keywords
-            '((sequence "TODO (t)" "WAIT (w)" "|" "DONE (d)" "SOMEDAY (s)")))
 ;; DONEの時刻を記録
 (setq org-log-done 'time)
+(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-cr" 'org-remember)
+;; 見出しの余分な*を消す
+(setq org-hide-leading-stars t)
+(setq org-agenda-custom-commands
+      '(
+	("p" "Projects"
+	 ((tags "PROJECT")))
+	("h" "Office and Home Lists"
+	 ((agenda)
+	  (tags-todo "OFFICE")
+	  (tags-todo "HOME")
+	  (tags-todo "WEB")
+	  (tags-todo "CALL")
+	  ))
 
+	("d" "Daily Action List"
+	 (
+	  (agenda "\" ((org-agenda-ndays 1)
+(org-agenda-sorting-strategy
+ (quote ((agenda time-up priority-down tag-up) )))
+(org-deadline-warning-days 0)
+))))))
+\"")))))
 ;;;;;;;;;;;
 ;; YaTeX ;;
 ;;;;;;;;;;;
@@ -64,3 +84,16 @@
 ;; R ;;
 ;;;;;;;
 ; (load "init-R")
+
+;;;;;;;;;;
+;; HTML ;;
+;;;;;;;;;;
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
+
+;;;;;;;;;;;;;;;;
+;; javascript ;;
+;;;;;;;;;;;;;;;;
+(require 'js2-mode)
+(autoload 'js2-mode "js2" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))

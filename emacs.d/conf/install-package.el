@@ -23,7 +23,8 @@
       ;; anything
       anzu
       undo-tree
-      undohist
+      bookmark+
+      ;; undohist
       smartparens
       ;; org-toodledo
       smart-compile
@@ -48,8 +49,12 @@
       ;; helm-flymake
       ;; processing-mode
       js2-mode
-      tabbar
+      js2-refactor
+      zenburn-theme
+      ;; tabbar
       powerline
+      rainbow-delimiters
+      web-mode
       ;; http-post-simple
       ;; org-toodledo
       ))

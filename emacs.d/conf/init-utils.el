@@ -24,13 +24,13 @@
   (helm-mode 1)
   (add-to-list 'helm-completing-read-handlers-alist '(find-file . nil)))
 
-;; undohistの設定
-(when (require 'undohist nil t)
-    (undohist-initialize))
+;; ;; undohistの設定
+;; (when (require 'undohist nil t)
+;;     (undohist-initialize))
 
 ;; undo-treeモードの設定
 (when (require 'undo-tree nil t)
-  (global-undo-tree-mode)
+  (global-undo-tree-mode t)
   (global-set-key (kbd "M-/") 'undo-tree-redo)
   )
 
@@ -81,7 +81,7 @@
 (global-set-key (kbd "C-c c") 'smart-compile)
 
 ;; 拡張版diredを使用する
-(require 'direx)
+;; (require 'direx)
 
 ;; ポモドーロタイマーを使う
 ; (require 'pomodoro)
@@ -137,3 +137,5 @@
  '(anzu-deactivate-region t)
  '(anzu-search-threshold 1000)
  '(anzu-replace-to-string-separator " => "))
+
+(require 'bookmark+)
