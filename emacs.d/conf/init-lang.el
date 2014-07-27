@@ -32,26 +32,8 @@
 (define-key global-map "\C-cr" 'org-remember)
 ;; 見出しの余分な*を消す
 (setq org-hide-leading-stars t)
-(setq org-agenda-custom-commands
-      '(
-	("p" "Projects"
-	 ((tags "PROJECT")))
-	("h" "Office and Home Lists"
-	 ((agenda)
-	  (tags-todo "OFFICE")
-	  (tags-todo "HOME")
-	  (tags-todo "WEB")
-	  (tags-todo "CALL")
-	  ))
-
-	("d" "Daily Action List"
-	 (
-	  (agenda "\" ((org-agenda-ndays 1)
-(org-agenda-sorting-strategy
- (quote ((agenda time-up priority-down tag-up) )))
-(org-deadline-warning-days 0)
-))))))
-\"")))))
+(setq org-default-notes-file (quote "/GTD/notes.org"))
+(define-key global-map "\C-cc" 'org-capture)
 ;;;;;;;;;;;
 ;; YaTeX ;;
 ;;;;;;;;;;;
@@ -95,5 +77,9 @@
 ;; javascript ;;
 ;;;;;;;;;;;;;;;;
 (require 'js2-mode)
+(setq js2-mode-hook
+      '(lambda()
+	 (setq js2-basic-offset 2)
+	 (setq tab-width 4)))
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
