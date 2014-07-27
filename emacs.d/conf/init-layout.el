@@ -51,9 +51,3 @@
      ;; —¼˜e‚Ìƒo[‚Ì”wŒiF
      (set-face-background 'fringe "NavajoWhite4"))
   (add-to-list 'custom-theme-load-path "~/.emacs.d/public_repos/replace-colorthemes"))
-
-;; powerline‚ğ—˜—p‚·‚é
-(load "init-powerline")
-
-;; tabbar‚ğ—˜—p‚·‚é
-;(load "init-tabbar")

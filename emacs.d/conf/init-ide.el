@@ -36,7 +36,7 @@
 ;(setq ac-dwin t)
 
 ;; flymakeの設定
-;(load "init-flymake")
+(load "init-flymake")
 
 ;; デバッカの設定
 ;(load "init-gdb")
