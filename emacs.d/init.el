@@ -32,7 +32,7 @@
   (load "init-ide")
 
   ;; web周りを整える
-  ;(load "init-web") 
+  ;(load "init-web")
   )
 
 ;; 通常のkey割り当てを変更する
@@ -52,12 +52,12 @@
  '(anzu-mode-lighter "")
  '(anzu-replace-to-string-separator " => ")
  '(anzu-search-threshold 1000)
- '(bmkp-last-as-first-bookmark-file "/home/vagrant/.emacs.d/bookmarks")
+ '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes (quote ("146d24de1bb61ddfa64062c29b5ff57065552a7c4019bee5d869e938782dfc2a" "dc77fb4e02417a6a932599168bd61927f6f2fe4fe3dbc4e4086a0bfb25babd67" default)))
  '(js2-basic-offset 2)
  '(js2-bounce-indent-p nil)
- '(org-agenda-files (quote ("/GTD/tasks.org")))
+ '(org-agenda-files (quote ("/GTD/inbox.org" "/GTD/tasks.org")))
  '(shell-pop-window-height 25)
  '(shell-pop-window-position "bottom"))
 (custom-set-faces
