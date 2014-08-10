@@ -18,6 +18,7 @@
       git-gutter
       magit
       helm
+      simple-httpd
       ;; gist
       ;; helm-gist
       ;; helm-ls-git

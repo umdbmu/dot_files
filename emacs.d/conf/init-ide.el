@@ -6,6 +6,7 @@
 
 ;; gitフロントエンドを使用する
 (require 'magit)
+(global-set-key (kbd "M-;") 'magit-status)
 (global-git-gutter-mode t)
 ;; (require 'helm-ls-git)
 ;; (require 'helm-gist)

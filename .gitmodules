@@ -7,3 +7,6 @@
 [submodule "emacs.d/public_repos/replace-colorthemes"]
 	path = emacs.d/public_repos/replace-colorthemes
 	url = https://github.com/emacs-jp/replace-colorthemes
+[submodule "emacs.d/public_repos/tern"]
+	path = emacs.d/public_repos/tern
+	url = https://github.com/marijnh/tern.git
