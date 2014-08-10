@@ -15,6 +15,7 @@
       auto-async-byte-compile
       ;; git-rebase-mode
       ;; git-commit-mode
+      git-gutter
       magit
       helm
       ;; gist
