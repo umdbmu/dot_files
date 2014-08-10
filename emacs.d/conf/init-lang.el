@@ -124,9 +124,15 @@
 ;; javascript ;;
 ;;;;;;;;;;;;;;;;
 (require 'js2-mode)
+(autoload 'tern-mode "tern.el" nil t)
 (setq js2-mode-hook
       '(lambda()
 	 (setq js2-basic-offset 2)
-	 (setq tab-width 4)))
+	 (setq tab-width 4)
+	 (tern-mode t)))
+(eval-after-load 'tern
+  '(progn
+     (require 'tern-auto-complete)
+     (tern-ac-setup)))
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))

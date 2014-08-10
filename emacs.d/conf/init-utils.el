@@ -188,3 +188,8 @@
 		    :weight 'bold)
 (set-face-attribute 'whitespace-empty nil
 		    :background my/bg-color)
+
+(require 'httpd)
+(require 'simple-httpd)
+(setq httpd-root "/vagrant")
+(httpd-start)
