@@ -76,16 +76,6 @@
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
 
-;;;;;;;;;;;;;;;;
-;; javascript ;;
-;;;;;;;;;;;;;;;;
-(require 'js2-mode)
-(setq js2-mode-hook
-      '(lambda()
-	 (setq js2-basic-offset 2)
-	 (setq tab-width 4)))
-(autoload 'js2-mode "js2" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 ;;;;;;;;;;;
 ;; YaTeX ;;
 ;;;;;;;;;;;
@@ -128,7 +118,7 @@
 (setq js2-mode-hook
       '(lambda()
 	 (setq js2-basic-offset 2)
-	 (setq tab-width 4)
+	 (setq-default tab-width 4 indent-tabs-mode nil)
 	 (tern-mode t)))
 (eval-after-load 'tern
   '(progn
