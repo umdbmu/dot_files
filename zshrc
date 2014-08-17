@@ -6,7 +6,7 @@ setopt prompt_subst
 setopt auto_pushd
 setopt correct
 setopt list_packed
-autoload predict-on
+# autoload predict-on
 predict-on
 
 # vcs_info
@@ -53,7 +53,7 @@ my_vcs_info() {
 case ${UID} in
     0)
 	PROMPT="%B%{[31m%}%/#%{m%}%b %f%1v%# "
-	RPROMPT=$'$(my_vcs_info)'	
+	RPROMPT=$'$(my_vcs_info)'
 	PROMPT2="%B%{[31m%}%_#%{[m%}%b "
 	SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{[m%}%b "
 	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
@@ -90,7 +90,7 @@ if [ -x "`which go`" ]; then
    export GOROOT=`go env GOROOT`
    export GOPATH=$HOME/go
    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-fi    
+fi
 
 # zshの初回起動時にemacs daemon を立ち上げる
 	if pgrep emacs >/dev/null 2>&1; then
