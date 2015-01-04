@@ -1,7 +1,7 @@
 ;; package.elの設定
 (when (require 'package nil t)
   ;; パッケージリポジトリにMarmaladeqと開発者運営のELPAを追加
-  (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+  ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;  (add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
   ;; インストールしたパッケージにロードパスを通して読み込む
@@ -18,7 +18,6 @@
       git-gutter
       magit
       helm
-      simple-httpd
       ;; gist
       ;; helm-gist
       ;; helm-ls-git
