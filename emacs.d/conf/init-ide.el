@@ -1,20 +1,53 @@
 ;; タグジャンプを使用可能にする
-;(load "init-tag")
+(load "init-tag")
 
-;; プロジェクト管理する
-;(require 'eproject)
+;; ウィンドウを折り返す
+(setq truncate-partial-width-windows nil)
+
+;; helm関連
+(require 'helm)
+(require 'helm-cmd-t)
+(require 'helm-C-x-b)
+(require 'helm-bm)
+(require 'helm-gtags)
+
+(helm-mode t)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-x C-b") 'helm-C-x-b)
+(global-set-key (kbd "C-x g") 'helm-cmd-t-grep)
+(add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
+
+;; ブックマーク関連の設定
+(setq-default bm-buffer-persistence nil)
+(setq bm-restore-repository-on-load t)
+(add-hook 'find-file-hook 'bm-buffer-restore)
+(add-hook 'kill-buffer-hook 'bm-buffer-save)
+(add-hook 'after-save-hook 'bm-buffer-save)
+(add-hook 'after-revert-hook 'bm-buffer-restore)
+(add-hook 'vc-before-checkin-hook 'bm-buffer-save)
+(add-hook 'kill-emacs-hook '(lambda nil
+			      (bm-buffer-save-all)
+			      (bm-repository-save)))
+
+(setq helm-source-bm (delete '(multiline) helm-source-bm))
+
+(defun bm-toggle-or-helm ()
+  "2回連続で起動したらhelm-bmを実行させる"
+  (interactive)
+  (bm-toggle)
+  (when (eq last-command 'bm-toggle-or-helm)
+    (helm-bm)))
+(global-set-key (kbd "M-:") 'bm-toggle-or-helm)
 
 ;; gitフロントエンドを使用する
 (require 'magit)
+(require 'git-gutter)
 (global-set-key (kbd "M-;") 'magit-status)
 (global-git-gutter-mode t)
-;; (require 'helm-ls-git)
-;; (require 'helm-gist)
-
-;(global-set-key (kbd "C-x C-d") 'helm-ls-git-ls)
 
 ;; 自動補完
- (require 'auto-complete)
+(require 'auto-complete)
 (global-auto-complete-mode t)
 (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
 ;; (define-key ac-complete-mode-map (kbd "C-n") 'ac-next)
@@ -35,10 +68,38 @@
 ;; 選択中にTabで補完完了にし、Retで補完中止にするにする
 (define-key ac-completing-map "\t" 'ac-complete)
 (define-key ac-completing-map "\r" nil)
-;(setq ac-dwin t)
 
-;; flymakeの設定
-(load "init-flymake")
+;; undo-treeモードの設定
+(require 'undo-tree)
+(global-undo-tree-mode t)
+(global-set-key (kbd "M-/") 'undo-tree-redo)
+
+;; smartparens を利用する
+(require 'smartparens-config)
+(smartparens-global-mode t)
+
+;; 拡張版diredを使用する
+(require 'direx)
+(global-set-key (kbd "C-x C-d") 'direx:jump-to-directory-other-window)
+
+;; anzu-mode
+(global-anzu-mode t)
+(global-set-key (kbd "M-%") 'anzu-query-replace)
+(global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+(set-face-attribute 'anzu-mode-line nil
+		    :foreground "yellow" :weight 'bold)
+(custom-set-variables
+'(anzu-deactivate-region t)
+'(anzu-search-threshold 1000)
+'(anzu-replace-to-string-separator " => ")
+)
+
+;; flycheck
+(require 'flycheck)
+(require 'flycheck-pos-tip)
+;; GUIの警告は表示しない
+(setq flymake-gui-warnings-enabled nil)
+(setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages)
 
 ;; デバッカの設定
 ;(load "init-gdb")
