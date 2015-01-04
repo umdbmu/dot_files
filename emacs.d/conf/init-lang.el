@@ -91,19 +91,6 @@
 ;; go言語の設定をする
 (load "init-go")
 
-;;;;;;;;;;;;
-;; python ;;
-;;;;;;;;;;;;
-;; pythonの自動補完
-;; (require 'ac-python)
-;; (autoload 'python-mode "python-mode" "Python editing mode." t)
-
-;;;;;;;;;;
-;; Perl ;;
-;;;;;;;;;;
-;; perlの設定をする
-; (load "init-perl")
-
 ;;;;;;;;;;
 ;; HTML ;;
 ;;;;;;;;;;
@@ -126,3 +113,20 @@
      (tern-ac-setup)))
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+;;;;;;;;;
+;; PHP ;;
+;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;
+;; emacs lisp ;;
+;;;;;;;;;;;;;;;;
+;; smart-compileを読み込む
+(require 'smart-compile)
+(autoload 'smart-compile "smart-compile" "when compiling")
+(global-set-key (kbd "C-c c") 'smart-compile)
+
+;; elファイル保存時にauto-async-byte-compileを実行する
+(require 'auto-async-byte-compile)
+(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)

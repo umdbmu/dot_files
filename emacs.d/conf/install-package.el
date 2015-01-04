@@ -15,36 +15,30 @@
       auto-async-byte-compile
       ;; git-rebase-mode
       ;; git-commit-mode
-      git-gutter
       magit
+      git-gutter
       helm
-      ;; gist
-      ;; helm-gist
-      ;; helm-ls-git
-      ;; anything
+      helm-cmd-t
+      helm-bm
       anzu
       undo-tree
-      bookmark+
-      ;; undohist
       smartparens
-      ;; org-toodledo
       smart-compile
-      ;; http-post-simple
-      ;; yasnippet
       ;; gtags
-      ;; helm-gtags
+      helm-gtags
+      helm-cmd-t
       direx
-      ;; window-layout
-      ;; e2wm
-      ;; e2wm-bookmark
       multi-term
       lib-requires
-      ;; eproject
       popwin
       shell-pop
       go-mode
       go-autocomplete
       auto-complete
+      gtags
+      helm-gtags
+      flycheck
+      flycheck-pos-tip
       ;; flymake
       ;; flymake-go
       ;; helm-flymake
@@ -52,12 +46,11 @@
       js2-mode
       js2-refactor
       zenburn-theme
+      ;; hc-zenburn
       ;; tabbar
       powerline
       rainbow-delimiters
       web-mode
-      ;; http-post-simple
-      ;; org-toodledo
       ))
 
 (let ((not-installed (loop for x in installing-package-list

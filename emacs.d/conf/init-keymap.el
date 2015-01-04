@@ -1,16 +1,9 @@
-;; find-fileをC-x C-fから変更
-;(global-set-key (kbd "C-x f") 'find-file)
 ;; C-wでコピー
-(global-set-key (kbd "C-w") 'backward-kill-word)
+(global-set-key [(control w)] 'backward-kill-word)
 ;; C-c wで切取り
 (global-set-key (kbd "C-c w") 'kill-region)
 ;; C-mにnewline-and-indentを割り当てる
 (global-set-key (kbd "C-m") 'newline-and-indent)
-
-;;; C-vで切取り
-;(global-set-key (kbd "C-v") 'kill-region)
-;M-vでコピーpp
-;(global-set-key (kbd "M-v") 'kill-ring-save)
 
 ;; cua-modeの設定(短形選択を可能にするため)
 (cua-mode t)
