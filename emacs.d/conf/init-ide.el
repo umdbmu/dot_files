@@ -1,6 +1,3 @@
-;; タグジャンプを使用可能にする
-(load "init-tag")
-
 ;; ウィンドウを折り返す
 (setq truncate-partial-width-windows nil)
 
@@ -17,6 +14,9 @@
 (global-set-key (kbd "C-x C-b") 'helm-C-x-b)
 (global-set-key (kbd "C-x g") 'helm-cmd-t-grep)
 (add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
+
+;; タグジャンプを使用可能にする
+(load "init-tag")
 
 ;; ブックマーク関連の設定
 (setq-default bm-buffer-persistence nil)
@@ -45,6 +45,16 @@
 (require 'git-gutter)
 (global-set-key (kbd "M-;") 'magit-status)
 (global-git-gutter-mode t)
+(defadvice magit-status (around magit-fullscreen activate)
+  (window-configuration-to-register :magit-fullscreen)
+  ad-do-it
+  (delete-other-windows))
+
+;; ediff
+; コントロール用のバッファを同一フレーム内に表示
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+; diffのバッファを上下ではなく左右に並べる
+(setq ediff-split-window-function 'split-window-horizontally)
 
 ;; 自動補完
 (require 'auto-complete)
@@ -80,7 +90,15 @@
 
 ;; 拡張版diredを使用する
 (require 'direx)
-(global-set-key (kbd "C-x C-d") 'direx:jump-to-directory-other-window)
+(require 'direx-project)
+(defun direx:jump-to-project-directory ()
+  (interactive)
+  (let ((result (ignore-errors
+                  (direx-project:jump-to-project-root-other-window)
+                  t)))
+    (unless result
+      (direx:jump-to-directory-other-window))))
+(global-set-key (kbd "C-x C-d") 'direx:jump-to-project-directory)
 
 ;; anzu-mode
 (global-anzu-mode t)

@@ -5,11 +5,6 @@
 ;; C-mにnewline-and-indentを割り当てる
 (global-set-key (kbd "C-m") 'newline-and-indent)
 
-;; cua-modeの設定(短形選択を可能にするため)
-(cua-mode t)
-;; cuaキーバインドを無効にする
-(setq cua-enable-cua-keys nil)
-
 ;; C-hをバックスペースにする
 (global-set-key [(control h)] 'delete-backward-char)
 

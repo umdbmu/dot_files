@@ -7,11 +7,11 @@
 ;; タグで解析されているファイルへ移動
 (global-set-key (kbd "C-c p") 'helm-gtags-find-file)
 ;; 変数の参照元と定義元へ移動
-(global-set-key (kbd "C-c s") 'helm-gtags-find-symbol)
+(define-key goto-map [?s] 'helm-gtags-find-symbol)
 ;; 現在のソースコード内で定義されている関数の一覧
 (global-set-key (kbd "M-l") 'helm-gtags-parse-file)
 ;;移動前の場所へ戻る
-(global-set-key (kbd "C-c a") 'helm-gtags-pop-stack)
+(define-key goto-map [?a] #'helm-gtags-pop-stack)
 ;; GTAGSを自動更新する
 (defun update-gtags (&optional prefix)
   (interactive "P")
