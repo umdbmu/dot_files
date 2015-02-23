@@ -35,8 +35,6 @@
       go-mode
       go-autocomplete
       auto-complete
-      gtags
-      helm-gtags
       flycheck
       flycheck-pos-tip
       ;; flymake

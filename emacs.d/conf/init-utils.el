@@ -75,9 +75,19 @@
 					;(push '(" *auto-async-byte-compile*" :position bottom :width 50 :noselect t) popwin:special-display-config)
 (push '("*shell-" :regexp t :position bottom) popwin:special-display-config)
 (push '("*helm" :regexp t :position bottom) popwin:special-display-config)
-(push '(direx:direx-mode :position left :width 25 :dedicated t) popwin:special-display-config)
+(push '(direx:direx-mode :position left :width 50 :dedicated t) popwin:special-display-config)
 
 ;; １行づつスクロールする
 (setq scroll-conservatively 35
       scroll-margin 0
       scroll-step 1)
+
+;; align-regexpでのパディングをスペースで行う
+(defadvice align-regexp (around align-regexp-with-spaces activate)
+  (let ((old-indent-tabs-mode indent-tabs-mode))
+    (setq indent-tabs-mode nil)
+    ad-do-it
+    (setq indent-tabs-mode old-indent-tabs-mode)))
+
+(require 'sequential-command-config)
+(sequential-command-setup-keys)
