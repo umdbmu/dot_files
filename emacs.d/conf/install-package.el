@@ -13,8 +13,6 @@
     '(
       ;; 使用しているパッケージ
       auto-async-byte-compile
-      ;; git-rebase-mode
-      ;; git-commit-mode
       magit
       git-gutter
       helm
@@ -24,9 +22,7 @@
       undo-tree
       smartparens
       smart-compile
-      ;; gtags
-      helm-gtags
-      helm-cmd-t
+      ;; helm-gtags
       direx
       multi-term
       lib-requires
@@ -37,19 +33,15 @@
       auto-complete
       flycheck
       flycheck-pos-tip
-      ;; flymake
-      ;; flymake-go
-      ;; helm-flymake
-      ;; processing-mode
       js2-mode
       js2-refactor
       zenburn-theme
-      ;; hc-zenburn
-      ;; tabbar
       powerline
       rainbow-delimiters
       web-mode
-      ))
+      php-mode
+      markdown-mode
+  ))
 
 (let ((not-installed (loop for x in installing-package-list
 			   when (not (package-installed-p x))
