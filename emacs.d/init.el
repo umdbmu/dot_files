@@ -58,3 +58,5 @@
 '(org-agenda-files (quote ("/GTD/inbox.org" "/GTD/tasks.org")))
 '(shell-pop-window-height 25)
 '(shell-pop-window-position "bottom")
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
