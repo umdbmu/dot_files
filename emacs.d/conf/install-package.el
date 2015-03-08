@@ -13,6 +13,7 @@
     '(
       ;; 使用しているパッケージ
       auto-async-byte-compile
+      sequential-command
       magit
       git-gutter
       helm
@@ -22,7 +23,7 @@
       undo-tree
       smartparens
       smart-compile
-      ;; helm-gtags
+      helm-gtags
       direx
       multi-term
       lib-requires
