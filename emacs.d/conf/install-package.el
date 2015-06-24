@@ -13,6 +13,7 @@
     '(
       ;; 使用しているパッケージ
       auto-async-byte-compile
+      sequential-command
       magit
       git-gutter
       helm
