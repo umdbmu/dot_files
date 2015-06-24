@@ -22,7 +22,7 @@
       undo-tree
       smartparens
       smart-compile
-      ;; helm-gtags
+      helm-gtags
       direx
       multi-term
       lib-requires
@@ -41,6 +41,7 @@
       web-mode
       php-mode
       markdown-mode
+      open-junk-file
   ))
 
 (let ((not-installed (loop for x in installing-package-list

@@ -36,6 +36,9 @@
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "/GTD/inbox.org" "Inbox") "* TODO %?\n %i\n %a")
 	("h" "Hirameki" entry (file+headline "/GTD/inbox.org" "Hirameki") "* HIRAMEKi %?\n %i\n %a")))
+(require 'open-junk-file)
+(setq open-junk-file-format "/GTD/junk/%Y-%m%d.org")
+(global-set-key "\C-xj" 'open-junk-file)
 
 ;;;;;;;;;;;
 ;; YaTeX ;;
