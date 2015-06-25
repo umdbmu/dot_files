@@ -29,15 +29,16 @@
 ;; DONEの時刻を記録
 (setq org-log-done 'time)
 (define-key global-map "\C-ca" 'org-agenda)
+(setq org-agenda-files '("~/Dropbox/GTD"))
 ;; 見出しの余分な*を消す
 (setq org-hide-leading-stars t)
-(setq org-default-notes-file (concat "/GTD/note.org"))
+(setq org-default-notes-file (concat "~/Dropbox/GTD/note.org"))
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "/GTD/inbox.org" "Inbox") "* TODO %?\n %i\n %a")
-	("h" "Hirameki" entry (file+headline "/GTD/inbox.org" "Hirameki") "* HIRAMEKi %?\n %i\n %a")))
+      '(("t" "Todo" entry (file+headline "~/Dropbox/GTD/inbox.org" "Inbox") "* TODO %?\n %i\n %a")
+	("h" "Hirameki" entry (file+headline "~/Dropbox/GTD/inbox.org" "Hirameki") "* HIRAMEKi %?\n %i\n %a")))
 (require 'open-junk-file)
-(setq open-junk-file-format "/GTD/junk/%Y-%m%d.org")
+(setq open-junk-file-format "~/Dropbox/GTD/junk/%Y-%m%d.org")
 (global-set-key "\C-xj" 'open-junk-file)
 
 ;;;;;;;;;;;
@@ -126,9 +127,9 @@
 ;; emacs lisp ;;
 ;;;;;;;;;;;;;;;;
 ;; smart-compileを読み込む
-(require 'smart-compile)
-(autoload 'smart-compile "smart-compile" "when compiling")
-(global-set-key (kbd "C-c c") 'smart-compile)
+;; (require 'smart-compile)
+;; (autoload 'smart-compile "smart-compile" "when compiling")
+;; (global-set-key (kbd "C-c c") 'smart-compile)
 
 ;; elファイル保存時にauto-async-byte-compileを実行する
 (require 'auto-async-byte-compile)
