@@ -8,7 +8,9 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-(load-theme 'zenburn t)
+(load-theme 'misterioso t)
+(custom-set-faces
+'(hl-line ((t (:background "color-236")))))
 
 ;; 対応する括弧のハイライト
 (setq show-paren-mode-delay 0)
