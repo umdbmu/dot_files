@@ -46,7 +46,15 @@
 (setq org-agenda-skip-scheduled-if-done nil)
 (setq org-hierarchical-checkbox-statistics t)
 (setq org-log-into-drawer t)
-
+(setq org-agenda-custom-commands
+      '(("c" "Calendar" agenda ""
+         ((org-agenda-ndays 7)                          ;; [1]
+          (org-agenda-start-on-weekday 0)               ;; [2]
+          (org-agenda-time-grid nil)
+          (org-agenda-repeating-timestamp-show-all t)   ;; [3]
+          (org-agenda-entry-types '(:timestamp :sexp))))  ;; [4]
+      ;; other commands go here
+        ))
 (defun my-org-clocktable-indent-string (level)
   (if (= level 1)
       ""
@@ -57,7 +65,6 @@
       (format "%s\\__"str))))
 
 (advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
-(define-key global-map "\C-cl" 'org-store-link)
 
 ;;;;;;;;;;;
 ;; YaTeX ;;
