@@ -41,6 +41,22 @@
 (setq open-junk-file-format "~/Dropbox/GTD/junk/%Y-%m%d.org")
 (global-set-key "\C-xj" 'open-junk-file)
 
+(setq org-agenda-skip-deadline-if-done nil)
+(setq org-agenda-skip-scheduled-if-done nil)
+(setq org-hierarchical-checkbox-statistics t)
+(setq org-log-into-drawer t)
+
+(defun my-org-clocktable-indent-string (level)
+  (if (= level 1)
+      ""
+    (let ((str (format "%d" (- level 1))))
+      (while (> level 2)
+        (setq level (1- level)
+              str (format "%s  " str)))
+      (format "%s\\__"str))))
+
+(advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
+
 ;;;;;;;;;;;
 ;; YaTeX ;;
 ;;;;;;;;;;;
