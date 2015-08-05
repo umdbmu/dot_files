@@ -2,7 +2,7 @@
 ;; フォントを変更する
 (set-face-attribute 'default nil
 		    :family "Ricty"
-		    :height 110)
+		    :height 120)
 
 (if (fboundp 'set-scroll-bar-mode) (set-scroll-bar-mode nil))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
