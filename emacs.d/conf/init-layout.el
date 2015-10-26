@@ -8,7 +8,7 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-(load-theme 'misterioso t)
+(load-theme 'aurora t)
 (custom-set-faces
 '(hl-line ((t (:background "color-236")))))
 

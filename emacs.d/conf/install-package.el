@@ -12,6 +12,7 @@
 (defvar installing-package-list
     '(
       ;; 使用しているパッケージ
+      aurora-theme
       auto-async-byte-compile
       sequential-command
       magit
@@ -43,6 +44,7 @@
       php-mode
       markdown-mode
       open-junk-file
+      org-ehtml
   ))
 
 (let ((not-installed (loop for x in installing-package-list
