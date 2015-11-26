@@ -29,16 +29,16 @@
 ;; DONEの時刻を記録
 (setq org-log-done 'time)
 (define-key global-map "\C-ca" 'org-agenda)
-(setq org-agenda-files '("~/Dropbox/GTD"))
+(setq org-agenda-files '("~/wiki/tasks"))
 ;; 見出しの余分な*を消す
 (setq org-hide-leading-stars t)
-(setq org-default-notes-file (concat "~/Dropbox/GTD/note.org"))
+(setq org-default-notes-file (concat "~/wiki/tasks/note.org"))
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/Dropbox/GTD/inbox.org" "Inbox") "* TODO %?\n %i\n %a")
-	("h" "Hirameki" entry (file+headline "~/Dropbox/GTD/inbox.org" "Hirameki") "* HIRAMEKi %?\n %i\n %a")))
+      '(("t" "Todo" entry (file+headline "~/wiki/tasks/inbox.org" "Inbox") "* TODO %?\n %i\n %a")
+	("h" "Hirameki" entry (file+headline "~/wiki/tasks/inbox.org" "Hirameki") "* HIRAMEKi %?\n %i\n %a")))
 (require 'open-junk-file)
-(setq open-junk-file-format "~/Dropbox/GTD/junk/%Y-%m%d.org")
+(setq open-junk-file-format "~/wiki/junk/%Y-%m.org")
 (global-set-key "\C-xj" 'open-junk-file)
 
 (setq org-agenda-skip-deadline-if-done nil)
