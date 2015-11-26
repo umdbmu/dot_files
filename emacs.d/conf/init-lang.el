@@ -34,6 +34,7 @@
 (setq org-hide-leading-stars t)
 (setq org-default-notes-file (concat "~/wiki/tasks/note.org"))
 (define-key global-map "\C-cc" 'org-capture)
+(define-key global-map "\C-cl" 'org-store-link)
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/wiki/tasks/inbox.org" "Inbox") "* TODO %?\n %i\n %a")
 	("h" "Hirameki" entry (file+headline "~/wiki/tasks/inbox.org" "Hirameki") "* HIRAMEKi %?\n %i\n %a")))
