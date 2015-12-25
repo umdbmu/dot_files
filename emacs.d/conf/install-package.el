@@ -44,6 +44,7 @@
       php-mode
       markdown-mode
       open-junk-file
+      puml-mode
   ))
 
 (let ((not-installed (loop for x in installing-package-list
