@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 ;; package.elの設定
 (when (require 'package nil t)
   ;; パッケージリポジトリにMarmaladeqと開発者運営のELPAを追加
@@ -45,7 +44,6 @@
       php-mode
       markdown-mode
       open-junk-file
-      org-ehtml
   ))
 
 (let ((not-installed (loop for x in installing-package-list
