@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ;; package.elの設定
 (when (require 'package nil t)
   ;; パッケージリポジトリにMarmaladeqと開発者運営のELPAを追加

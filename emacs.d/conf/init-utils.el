@@ -89,5 +89,5 @@
     ad-do-it
     (setq indent-tabs-mode old-indent-tabs-mode)))
 
-(require 'sequential-command-config)
-(sequential-command-setup-keys)
+;(require 'sequential-command-config)
+;(sequential-command-setup-keys)

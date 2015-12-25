@@ -1,12 +1,13 @@
 ;; C-wでコピー
-(global-set-key [(control w)] 'backward-kill-word)
+(global-set-key (kbd "C-w") 'backward-kill-word)
 ;; C-c wで切取り
 (global-set-key (kbd "C-c w") 'kill-region)
 ;; C-mにnewline-and-indentを割り当てる
 (global-set-key (kbd "C-m") 'newline-and-indent)
 
 ;; C-hをバックスペースにする
-(global-set-key [(control h)] 'delete-backward-char)
+(keyboard-translate ?\C-h ?\C-?)
+(global-set-key (kbd "C-h") 'delete-backward-char)
 
 ;; コメント、コメントアウトのキーバインドを変更する
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)

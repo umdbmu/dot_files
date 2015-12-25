@@ -41,6 +41,7 @@
 (global-set-key (kbd "M-:") 'bm-toggle-or-helm)
 
 ;; gitフロントエンドを使用する
+(setq magit-last-seen-setup-instructions "1.4.0")
 (require 'magit)
 (require 'git-gutter)
 (global-set-key (kbd "M-;") 'magit-status)

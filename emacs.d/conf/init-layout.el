@@ -65,7 +65,7 @@
 
 ;;; mode-lineのレイアウト
 ;; 画面下に現在の関数名を表示する
-(which-function-mode 1)
+(which-function-mode 0)
 
 ;; powerlineを利用する
 (load "init-powerline")
