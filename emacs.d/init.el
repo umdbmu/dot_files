@@ -12,6 +12,8 @@
 
 (add-to-load-path "elisp" "conf" "public_repos" "info" "share" "elpa")
 
+(prefer-coding-system 'utf-8-unix)
+
 (when (>= emacs-major-version 24)
   (when (>= emacs-minor-version 4)
     (setq load-prefer-newer t))

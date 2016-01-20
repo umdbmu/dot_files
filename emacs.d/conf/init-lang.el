@@ -64,6 +64,7 @@
               str (format "%s  " str)))
       (format "%s\\__"str))))
 
+(setq org-confirm-babel-evaluate nil)
 (advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
 
 ;;;;;;;;;;;
@@ -189,3 +190,8 @@
 ;	     (web-mode-indent 4)
 ;	     (add-hook 'after-save-hook 'helm-gtags-update-tags)
 ;))
+
+;;;;;;;;;;;;;;
+;; PlantUML ;;
+;;;;;;;;;;;;;;
+(load "init-plantuml")
