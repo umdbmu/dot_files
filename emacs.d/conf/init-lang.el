@@ -42,8 +42,9 @@
 (setq open-junk-file-format "~/wiki/junk/%Y-%m.org")
 (global-set-key "\C-xj" 'open-junk-file)
 
-(setq org-agenda-skip-deadline-if-done nil)
-(setq org-agenda-skip-scheduled-if-done nil)
+(setq org-agenda-skip-deadline-if-done t)
+(setq org-agenda-skip-scheduled-if-done t)
+(setq org-agenda-skip-scheduled-if-deadline-is-shown t)
 (setq org-hierarchical-checkbox-statistics t)
 (setq org-log-into-drawer t)
 (setq org-agenda-custom-commands
@@ -65,6 +66,7 @@
       (format "%s\\__"str))))
 
 (advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
+(load "init-plantuml")
 
 ;;;;;;;;;;;
 ;; YaTeX ;;
