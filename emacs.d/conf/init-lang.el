@@ -68,6 +68,7 @@
 
 (setq org-confirm-babel-evaluate nil)
 (advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
+(load "init-plantuml")
 
 ;;;;;;;;;;;
 ;; YaTeX ;;
