@@ -37,7 +37,8 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/wiki/tasks/inbox.org" "Inbox") "* TODO %?\n %i\n %a")
-	("h" "Hirameki" entry (file+headline "~/wiki/tasks/inbox.org" "Hirameki") "* HIRAMEKi %?\n %i\n %a")))
+	("h" "Hirameki" entry (file+headline "~/wiki/tasks/inbox.org" "Hirameki") "* HIRAMEKi %?\n %i\n %a")
+	("b" "Bookmark" entry (file+headline "~/wiki/tasks/inbox.org" "Bookmark") "* Bookmark %?\n %i\n %a")))
 (require 'open-junk-file)
 (setq open-junk-file-format "~/wiki/junk/%Y-%m.org")
 (global-set-key "\C-xj" 'open-junk-file)
