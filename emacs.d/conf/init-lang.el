@@ -40,7 +40,7 @@
 	("h" "Hirameki" entry (file+headline "~/wiki/tasks/inbox.org" "Hirameki") "* HIRAMEKi %?\n %i\n %a")
 	("b" "Bookmark" entry (file+headline "~/wiki/tasks/inbox.org" "Bookmark") "* Bookmark %?\n %i\n %a")))
 (require 'open-junk-file)
-(setq open-junk-file-format "~/wiki/junk/%Y-%m.org")
+(setq open-junk-file-format "~/wiki/junk/%Y-%m-%d-daily.org")
 (global-set-key "\C-xj" 'open-junk-file)
 
 (setq org-agenda-skip-deadline-if-done t)
