@@ -7,19 +7,27 @@
 ;; Markdown ;;
  ;;;;;;;;;;;;;;
 ;; .mkファイルをmarkdown-modeで開く
+(autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
-      (cons '("\\.mk?d$" .markdown-mode) auto-mode-alist))
+      (cons '("\\.mk?d$" . markdown-mode) auto-mode-alist))
 ;; (add-hook 'markdown-mode-hook 'flyspell-mode)
-;; Marked でmarkdownファイルをプレビューする (Mac OSX時)
-(when (eq system-type 'darwin)
-  (defun markdown-preview-file ()
-    "run Marked on the current file and revert the buffer"
-    (interactive)
-    (shell-command
-     (format "open -a /Applications/Marked.app %s"
-     (shell-quote-argument (buffer-file-name))))
-    )
-  (global-set-key "\C-cm" 'markdown-preview-file))
+(defun markdown-preview-file ()
+  "run Marked on the current file and revert the buffer"
+  (interactive)
+  (shell-command
+   (format "pandoc %s -o test.html"
+   (shell-quote-argument (buffer-file-name))))
+)
+(global-set-key "\C-cm" 'markdown-preview-file)
+
+(custom-set-faces
+ '(markdown-header-face-1 ((t (:inherit org-level-1))))
+ '(markdown-header-face-2 ((t (:inherit org-level-2))))
+ '(markdown-header-face-3 ((t (:inherit org-level-3))))
+ '(markdown-header-face-4 ((t (:inherit org-level-4))))
+ '(markdown-header-face-5 ((t (:inherit org-level-5))))
+ '(markdown-header-face-6 ((t (:inherit org-level-6))))
+)
 
 ;;;;;;;;;
 ;; org ;;
@@ -40,7 +48,7 @@
 	("h" "Hirameki" entry (file+headline "~/wiki/tasks/inbox.org" "Hirameki") "* HIRAMEKi %?\n %i\n %a")
 	("b" "Bookmark" entry (file+headline "~/wiki/tasks/inbox.org" "Bookmark") "* Bookmark %?\n %i\n %a")))
 (require 'open-junk-file)
-(setq open-junk-file-format "~/wiki/junk/%Y-%m-%d-daily.org")
+(setq open-junk-file-format "~/wiki/_posts/%Y-%m-%d-daily.org")
 (global-set-key "\C-xj" 'open-junk-file)
 
 (setq org-agenda-skip-deadline-if-done t)
