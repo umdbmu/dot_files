@@ -15,9 +15,6 @@
 (global-set-key (kbd "C-x g") 'helm-cmd-t-grep)
 (add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
 
-;; タグジャンプを使用可能にする
-(load "init-tag")
-
 ;; ブックマーク関連の設定
 (setq-default bm-buffer-persistence nil)
 (setq bm-restore-repository-on-load t)
@@ -107,6 +104,7 @@
 (set-face-attribute 'anzu-mode-line nil
 		    :foreground "yellow" :weight 'bold)
 (custom-set-variables
+'(anzu-mode-lighter "")
 '(anzu-deactivate-region t)
 '(anzu-search-threshold 1000)
 '(anzu-replace-to-string-separator " => ")
@@ -118,9 +116,6 @@
 ;; GUIの警告は表示しない
 (setq flymake-gui-warnings-enabled nil)
 (setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages)
-
-;; デバッカの設定
-;(load "init-gdb")
 
 ;; 各種言語の設定を行う
 (load "init-lang")

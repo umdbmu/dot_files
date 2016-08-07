@@ -1,6 +1,3 @@
-;; PATHの設定を引き継ぐ
-; (exec-path-from-shell-initialize)
-
 ;; file名の補完で大文字と小文字を区別しない
 (setq completion-ignore-case t)
 
@@ -10,16 +7,6 @@
 ;; 同名ファイルのバッファ名の識別文字列を変更する
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-
-;; helmの設定
-;; (when (require 'helm-config nil t)
-;;   (global-set-key (kbd "C-x C-b") 'helm-mini)
-;;   (global-set-key (kbd "M-r") 'helm-resume)
-;;   (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-;;   (global-set-key (kbd "C-x b") 'electric-buffer-list)
-
-;;   (helm-mode 1)
-;;   (add-to-list 'helm-completing-read-handlers-alist '(find-file . nil)))
 
 ;; window を縦に二分割する
 (defun split-window-vertically-n (num_wins)
@@ -72,7 +59,6 @@
 (push '(" *auto-async-byte-compile*" :height 14 :position bottom :noselect t) popwin:special-display-config)
 (push '("*VC-log*" :height 10 :position bottom) popwin:special-display-config)
 (push '("eproject" :height 10 :position bottom) popwin:special-display-config)
-					;(push '(" *auto-async-byte-compile*" :position bottom :width 50 :noselect t) popwin:special-display-config)
 (push '("*shell-" :regexp t :position bottom) popwin:special-display-config)
 (push '("*helm" :regexp t :position bottom) popwin:special-display-config)
 (push '(direx:direx-mode :position left :width 50 :dedicated t) popwin:special-display-config)
