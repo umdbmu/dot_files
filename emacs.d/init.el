@@ -1,7 +1,7 @@
 (when (> emacs-major-version 23)
   (defvar user-emacs-directory "~/.emacs.d/"))
 
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(add-to-list 'load-path "el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
   (require 'package)
@@ -14,23 +14,29 @@
 
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (el-get 'sync)
-(el-get-bundle 'sequential-command)
+;; (el-get-bundle elpa:sequential-command)
 (el-get-bundle 'magit)
 (el-get-bundle 'git-gutter)
 (el-get-bundle 'helm)
-(el-get-bundle 'helm-cmd-t)
+(el-get-bundle 'powerline)
+(el-get-bundle 'popwin)
+(el-get-bundle 'emacswiki:sequential-command)
+(el-get-bundle 'emacswiki:sequential-command-config)
+(el-get-bundle 'auto-complete)
+(el-get-bundle 'smartparens)
+(el-get-bundle 'direx)
 
 ;; ;;load-path を追加する関数を定義
-;; (defun add-to-load-path (&rest paths)
-;;   (let (path)
-;;     (dolist (path paths paths)
-;;       (let ((default-directory
-;; 	      (expand-file-name (concat user-emacs-directory path))))
-;; 	(add-to-list 'load-path default-directory)
-;; 	(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-;; 	    (normal-top-level-add-subdirs-to-load-path))))))
+(defun add-to-load-path (&rest paths)
+   (let (path)
+     (dolist (path paths paths)
+       (let ((default-directory
+ 	      (expand-file-name (concat user-emacs-directory path))))
+ 	(add-to-list 'load-path default-directory)
+ 	(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+ 	    (normal-top-level-add-subdirs-to-load-path))))))
 
-(add-to-load-path "elisp" "conf" "public_repos" "info" "share" "elpa")
+(add-to-load-path "conf")
 
 (when (>= emacs-major-version 24)
   (when (>= emacs-minor-version 4)
