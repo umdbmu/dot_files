@@ -4,41 +4,38 @@
 ;; helm関連
 (require 'helm)
 (require 'helm-cmd-t)
-(require 'helm-C-x-b)
-(require 'helm-bm)
-(require 'helm-gtags)
 
 (helm-mode t)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x C-b") 'helm-C-x-b)
+; (global-set-key (kbd "C-x C-b") 'helm-C-x-b)
 (global-set-key (kbd "C-x g") 'helm-cmd-t-grep)
 (add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
 
 ;; タグジャンプを使用可能にする
-(load "init-tag")
+; (load "init-tag")
 
 ;; ブックマーク関連の設定
-(setq-default bm-buffer-persistence nil)
-(setq bm-restore-repository-on-load t)
-(add-hook 'find-file-hook 'bm-buffer-restore)
-(add-hook 'kill-buffer-hook 'bm-buffer-save)
-(add-hook 'after-save-hook 'bm-buffer-save)
-(add-hook 'after-revert-hook 'bm-buffer-restore)
-(add-hook 'vc-before-checkin-hook 'bm-buffer-save)
-(add-hook 'kill-emacs-hook '(lambda nil
-			      (bm-buffer-save-all)
-			      (bm-repository-save)))
+;; (setq-default bm-buffer-persistence nil)
+;; (setq bm-restore-repository-on-load t)
+;; (add-hook 'find-file-hook 'bm-buffer-restore)
+;; (add-hook 'kill-buffer-hook 'bm-buffer-save)
+;; (add-hook 'after-save-hook 'bm-buffer-save)
+;; (add-hook 'after-revert-hook 'bm-buffer-restore)
+;; (add-hook 'vc-before-checkin-hook 'bm-buffer-save)
+;; (add-hook 'kill-emacs-hook '(lambda nil
+;; 			      (bm-buffer-save-all)
+;; 			      (bm-repository-save)))
 
-(setq helm-source-bm (delete '(multiline) helm-source-bm))
+;; (setq helm-source-bm (delete '(multiline) helm-source-bm))
 
-(defun bm-toggle-or-helm ()
-  "2回連続で起動したらhelm-bmを実行させる"
-  (interactive)
-  (bm-toggle)
-  (when (eq last-command 'bm-toggle-or-helm)
-    (helm-bm)))
-(global-set-key (kbd "M-:") 'bm-toggle-or-helm)
+;; (defun bm-toggle-or-helm ()
+;;   "2回連続で起動したらhelm-bmを実行させる"
+;;   (interactive)
+;;   (bm-toggle)
+;;   (when (eq last-command 'bm-toggle-or-helm)
+;;     (helm-bm)))
+;; (global-set-key (kbd "M-:") 'bm-toggle-or-helm)
 
 ;; gitフロントエンドを使用する
 (require 'magit)
@@ -80,13 +77,13 @@
 (define-key ac-completing-map "\r" nil)
 
 ;; undo-treeモードの設定
-(require 'undo-tree)
-(global-undo-tree-mode t)
-(global-set-key (kbd "M-/") 'undo-tree-redo)
+;; (require 'undo-tree)
+;; (global-undo-tree-mode t)
+;; (global-set-key (kbd "M-/") 'undo-tree-redo)
 
 ;; smartparens を利用する
-(require 'smartparens-config)
-(smartparens-global-mode t)
+;; (require 'smartparens-config)
+;; (smartparens-global-mode t)
 
 ;; 拡張版diredを使用する
 (require 'direx)
@@ -113,11 +110,11 @@
 )
 
 ;; flycheck
-(require 'flycheck)
-(require 'flycheck-pos-tip)
-;; GUIの警告は表示しない
-(setq flymake-gui-warnings-enabled nil)
-(setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages)
+;; (require 'flycheck)
+;; (require 'flycheck-pos-tip)
+;; ;; GUIの警告は表示しない
+;; (setq flymake-gui-warnings-enabled nil)
+;; (setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages)
 
 ;; デバッカの設定
 ;(load "init-gdb")
