@@ -25,6 +25,8 @@
 (el-get-bundle 'auto-complete)
 (el-get-bundle 'smartparens)
 (el-get-bundle 'direx)
+(el-get-bundle 'anzu)
+(el-get-bundle 'auto-complete)
 
 ;; ;;load-path を追加する関数を定義
 (defun add-to-load-path (&rest paths)
