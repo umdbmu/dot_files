@@ -103,6 +103,39 @@
                 (org-agenda-clockreport-mode t))))
 (advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
 
+(defvar growl-program "growlnotify")
+(defvar growl-notify-icon (concat data-directory "images/icons/hicolor/128x128/apps/emacs.png"))
+(defvar growl-notify-application-name "Emacs")
+(defun growl-notify (title message priority)
+  (interactive)
+  (call-process growl-program nil 0 nil
+                "/r:\"General Notification\""
+                (concat "/pass:" (shell-quote-argument "password"))
+                (concat "/a:" (shell-quote-argument growl-notify-application-name))
+                (concat "/ai:" (shell-quote-argument growl-notify-icon))
+                (concat "/p:" priority)
+                (concat "/t:" (shell-quote-argument
+                               (encode-coding-string title 'shift_jis)))
+                (encode-coding-string message 'shift_jis)))
+
+(add-hook 'org-clock-in-hook
+          (lambda ()
+            (growl-notify org-clock-heading
+              (concat "[start] " (format-time-string "%D %T" org-clock-start-time))
+              "0")))
+
+(add-hook 'org-clock-out-hook
+          (lambda ()
+            (growl-notify org-clock-heading
+              (concat "[end] " (format-time-string "%D %T" org-clock-start-time))
+              "2")))
+
+(setq org-capture-templates
+      '(
+        ("i" "interrupted task" entry
+         (file "~/wiki/tasks/interrupt.org")
+         "* %?\n" :clock-in t :clock-resume t)
+       ))
 ;;;;;;;;;;;;;;;;
 ;; emacs lisp ;;
 ;;;;;;;;;;;;;;;;
