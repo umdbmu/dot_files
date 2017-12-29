@@ -1,3 +1,9 @@
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (when (> emacs-major-version 23)
   (defvar user-emacs-directory "~/.emacs.d/"))
 ;;load-path を追加する関数を定義
@@ -25,7 +31,7 @@
   (load "init-utils")
 
   ;; shellの設定
-  (load "init-shell")
+  ; (load "init-shell")
 
   ;; 入力関係
   ;; (load "init-input")
@@ -60,3 +66,20 @@
 '(shell-pop-window-position "bottom")
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(anzu-deactivate-region t)
+ '(anzu-replace-to-string-separator " => ")
+ '(anzu-search-threshold 1000)
+ '(custom-safe-themes
+   (quote
+    ("4e753673a37c71b07e3026be75dc6af3efbac5ce335f3707b7d6a110ecb636a3" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(hl-line ((t (:background "color-236")))))

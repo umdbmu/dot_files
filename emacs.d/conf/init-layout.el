@@ -63,6 +63,10 @@
 (set-face-attribute 'whitespace-empty nil
 		    :background my/bg-color)
 
+(add-hook 'markdown-mode-hook
+          '(lambda ()
+             (set (make-local-variable 'whitespace-action) nil)))
+
 ;;; mode-lineのレイアウト
 ;; 画面下に現在の関数名を表示する
 (which-function-mode 1)

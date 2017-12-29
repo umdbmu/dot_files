@@ -8,19 +8,17 @@
  ;;;;;;;;;;;;;;
 ;; .mkファイルをmarkdown-modeで開く
 (setq auto-mode-alist
-      (cons '("\\.mk?d$" .markdown-mode) auto-mode-alist))
+      (cons '("\\.mk?d$" . markdown-mode) auto-mode-alist))
 ;; (add-hook 'markdown-mode-hook 'flyspell-mode)
 ;; Marked でmarkdownファイルをプレビューする (Mac OSX時)
-(when (eq system-type 'darwin)
-  (defun markdown-preview-file ()
-    "run Marked on the current file and revert the buffer"
-    (interactive)
-    (shell-command
-     (format "open -a /Applications/Marked.app %s"
-     (shell-quote-argument (buffer-file-name))))
-    )
-  (global-set-key "\C-cm" 'markdown-preview-file))
-
+(custom-set-faces
+ '(markdown-header-face-1 ((t (:inherit org-level-1))))
+ '(markdown-header-face-2 ((t (:inherit org-level-2))))
+ '(markdown-header-face-3 ((t (:inherit org-level-3))))
+ '(markdown-header-face-4 ((t (:inherit org-level-4))))
+ '(markdown-header-face-5 ((t (:inherit org-level-5))))
+ '(markdown-header-face-6 ((t (:inherit org-level-6))))
+)
 ;;;;;;;;;
 ;; org ;;
 ;;;;;;;;;
@@ -37,9 +35,38 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/wiki/tasks/inbox.org" "Inbox") "* TODO %?\n %i\n %a")
-	("h" "Hirameki" entry (file+headline "~/wiki/tasks/inbox.org" "Hirameki") "* HIRAMEKi %?\n %i\n %a")))
+	("h" "Hirameki" entry (file+headline "~/wiki/tasks/inbox.org" "Hirameki") "* HIRAMEKi %?\n %i\n %a")
+	("b" "Bookmark" entry (file+headline "~/wiki/tasks/inbox.org" "Bookmark") "* Bookmark %?\n %i\n %a")))
 (require 'open-junk-file)
-(setq open-junk-file-format "~/wiki/junk/%Y-%m.org")
+(setq open-junk-file-format "~/wiki/junk/%Y-%m-%d-daily.org")
+(global-set-key "\C-xj" 'open-junk-file)
+
+(setq org-agenda-skip-deadline-if-done t)
+(setq org-agenda-skip-scheduled-if-done t)
+(setq org-agenda-skip-scheduled-if-deadline-is-shown t)
+(setq org-hierarchical-checkbox-statistics t)
+(setq org-log-into-drawer t)
+
+(setq org-agenda-custom-commands
+      '(("c" "Calendar" agenda ""
+         ((org-agenda-ndays 7)                          ;; [1]
+          (org-agenda-start-on-weekday 0)               ;; [2]
+          (org-agenda-time-grid nil)
+          (org-agenda-repeating-timestamp-show-all t)   ;; [3]
+          (org-agenda-entry-types '(:timestamp :sexp))))  ;; [4]
+      ;; other commands go here
+        ))
+
+(defun my-org-clocktable-indent-string (level)
+  (if (= level 1)
+      ""
+    (let ((str "-")) ;first char, e.g can be "|"
+      (while (> level 2)
+        (setq level (1- level)
+              str (concat str "-"))) ;fillers, e.g can be "---"
+      (concat str " ")))) ;end e.g can be ">"
+
+(advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
 (global-set-key "\C-xj" 'open-junk-file)
 
 (setq org-agenda-skip-deadline-if-done nil)
@@ -56,90 +83,59 @@
               str (format "%s  " str)))
       (format "%s\\__"str))))
 
+(setq org-confirm-babel-evaluate nil)
+(advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
+;(load "init-plantuml")
+
+(add-to-list 'org-agenda-custom-commands
+             '("D" agenda ""
+               ( ;; 1日分だけ表示する
+                (org-agenda-span 1)
+                ;; agenda各行の行頭のスペースをなくす
+                (org-agenda-prefix-format '((agenda . "%?-12t% s")))
+                ;; グリッドを表示しない
+                (org-agenda-use-time-grid nil)
+                ;; clockを表示する
+                (org-agenda-start-with-log-mode t)
+                (org-agenda-show-log 'clockcheck)
+                ;; clockの総計を表でまとめる
+                (org-agenda-start-with-clockreport-mode t)
+                (org-agenda-clockreport-mode t))))
 (advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
 
-;;;;;;;;;;;
-;; YaTeX ;;
-;;;;;;;;;;;
-;; texファイルをyatexモードで開く
-(setq auto-mode-alist
-      (append '(("\\.tex$" . yatex-mode)) auto-mode-alist))
-(autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
-(setq YaTeX-inhibit-prefix-letter t)
+(defvar growl-program "growlnotify")
+(defvar growl-notify-icon (concat data-directory "images/icons/hicolor/128x128/apps/emacs.png"))
+(defvar growl-notify-application-name "Emacs")
+(defun growl-notify (title message priority)
+  (interactive)
+  (call-process growl-program nil 0 nil
+                "/r:\"General Notification\""
+                (concat "/pass:" (shell-quote-argument "password"))
+                (concat "/a:" (shell-quote-argument growl-notify-application-name))
+                (concat "/ai:" (shell-quote-argument growl-notify-icon))
+                (concat "/p:" priority)
+                (concat "/t:" (shell-quote-argument
+                               (encode-coding-string title 'shift_jis)))
+                (encode-coding-string message 'shift_jis)))
 
-;;;;;;;;
-;; Go ;;
-;;;;;;;;
-;; go言語の設定をする
-(load "init-go")
+(add-hook 'org-clock-in-hook
+          (lambda ()
+            (growl-notify org-clock-heading
+              (concat "[start] " (format-time-string "%D %T" org-clock-start-time))
+              "0")))
 
-;;;;;;;;;;;;
-;; python ;;
-;;;;;;;;;;;;
-;; pythonの自動補完
-;; (require 'ac-python)
-;; (autoload 'python-mode "python-mode" "Python editing mode." t)
+(add-hook 'org-clock-out-hook
+          (lambda ()
+            (growl-notify org-clock-heading
+              (concat "[end] " (format-time-string "%D %T" org-clock-start-time))
+              "2")))
 
-;;;;;;;;;;
-;; Perl ;;
-;;;;;;;;;;
-;; perlの設定をする
-;; (load "init-perl")
-
-;;;;;;;
-;; R ;;
-;;;;;;;
-;; (load "init-R")
-
-;;;;;;;;;;
-;; HTML ;;
-;;;;;;;;;;
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
-
-;;;;;;;;;;;
-;; YaTeX ;;
-;;;;;;;;;;;
-;; texファイルをyatexモードで開く
-(setq auto-mode-alist
-      (append '(("\\.tex$" . yatex-mode)) auto-mode-alist))
-(autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
-(setq YaTeX-inhibit-prefix-letter t)
-
-;;;;;;;;
-;; Go ;;
-;;;;;;;;
-;; go言語の設定をする
-(load "init-go")
-
-;;;;;;;;;;
-;; HTML ;;
-;;;;;;;;;;
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
-
-;;;;;;;;;;;;;;;;
-;; javascript ;;
-;;;;;;;;;;;;;;;;
-(require 'js2-mode)
-(autoload 'tern-mode "tern.el" nil t)
-(setq js2-mode-hook
-      '(lambda()
-	 (setq js2-basic-offset 2)
-	 (setq-default tab-width 4 indent-tabs-mode nil)
-	 (tern-mode t)))
-(eval-after-load 'tern
-  '(progn
-     (require 'tern-auto-complete)
-     (tern-ac-setup)))
-(autoload 'js2-mode "js2" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-
-;;;;;;;;;
-;; PHP ;;
-;;;;;;;;;
-
-
+(setq org-capture-templates
+      '(
+        ("i" "interrupted task" entry
+         (file "~/wiki/tasks/interrupt.org")
+         "* %?\n" :clock-in t :clock-resume t)
+       ))
 ;;;;;;;;;;;;;;;;
 ;; emacs lisp ;;
 ;;;;;;;;;;;;;;;;
@@ -151,45 +147,3 @@
 ;; elファイル保存時にauto-async-byte-compileを実行する
 (require 'auto-async-byte-compile)
 (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
-
-;;;;;;;;;;;;;;
-;; web-mode ;;
-;;;;;;;;;;;;;;
-(require 'web-mode)
-;; 拡張子の設定
-(add-to-list 'auto-mode-alist '("\\.phtml$"     . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl$"       . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsp$"       . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x$"   . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb$"       . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?$"     . web-mode))
-(defun web-mode-indent (num)
-  (interactive "nIndent: ")
-  (setq web-mode-markup-indent-offset num)
-  (setq web-mode-css-indent-offset num)
-  (setq web-mode-style-padding num)
-  (setq web-mode-code-indent-offset num)
-  (setq web-mode-script-padding num)
-  (setq web-mode-block-padding num)
-  )
-;; インデント関係
-(defun web-mode-hook ()
-  "Hooks for Web mode."
-  (setq web-mode-html-offset   4)
-  (setq web-mode-css-offset    4)
-  (setq web-mode-script-offset 4)
-  (setq web-mode-php-offset    4)
-  (setq web-mode-java-offset   4)
-  (setq web-mode-asp-offset    4)
-  (setq indent-tabs-mode t)
-  (setq tab-width 4))
-(add-hook 'web-mode-hook 'web-mode-hook)
-
-(add-hook 'php-mode-hook
-	  '(lambda()
-	     (setq tab-width 4)
-	     (setq indent-tabs-mode t)
-	     (setq c-basic-offset 4)
-	     (web-mode-indent 4)
-	     (add-hook 'after-save-hook 'helm-gtags-update-tags)
-))
