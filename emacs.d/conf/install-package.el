@@ -12,7 +12,6 @@
 (defvar installing-package-list
     '(
       ;; 使用しているパッケージ
-      aurora-theme
       auto-async-byte-compile
       sequential-command
       magit
