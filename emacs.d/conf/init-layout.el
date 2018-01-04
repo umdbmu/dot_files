@@ -8,9 +8,9 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-(load-theme 'zenburn t)
-(custom-set-faces
-'(hl-line ((t (:background "color-236")))))
+(use-package zenburn-theme
+  :config
+  (load-theme 'zenburn t))
 
 ;; 対応する括弧のハイライト
 (setq show-paren-mode-delay 0)
@@ -19,7 +19,6 @@
 (setq show-paren-style 'expression)
 (set-face-background 'show-paren-match-face "NavyBlue")
 
-;(setq hi-line-face '((:background "NavyBlue" t)(t(:bold t))))
 (global-hl-line-mode t)
 
 (require 'whitespace)

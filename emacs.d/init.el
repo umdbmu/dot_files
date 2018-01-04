@@ -6,7 +6,6 @@
 
 (when (> emacs-major-version 23)
   (defvar user-emacs-directory "~/.emacs.d/"))
-;;load-path を追加する関数を定義
 (defun add-to-load-path (&rest paths)
   (let (path)
     (dolist (path paths paths)
@@ -18,30 +17,43 @@
 
 (add-to-load-path "elisp" "conf" "public_repos" "info" "share" "elpa")
 
-(when (>= emacs-major-version 24)
-  (when (>= emacs-minor-version 4)
-    (setq load-prefer-newer t))
-  ;; 設定に必要なパッケージのインストール
-  (load "install-package")
-  (require 'compile)
-  ;; 見た目の設定をする
-  (load "init-layout")
+;; package.elの設定
+(when (require 'package nil t)
+  ;; パッケージリポジトリにMarmaladeqと開発者運営のELPAを追加
+  ; (add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+  ;; インストールしたパッケージにロードパスを通して読み込む
+  (package-initialize))
+(require 'cl)
 
-  ;; 便利設定をまとめて読み込む
-  (load "init-utils")
+;; install use-package if not installed.
+(when (not (package-installed-p 'use-package))
+  (package-refresh-contents)
+  (package-install 'use-package))
 
-  ;; shellの設定
-  ; (load "init-shell")
+(require 'use-package)
+(setq use-package-always-ensure t)
 
-  ;; 入力関係
-  ;; (load "init-input")
+(load "init-layout")
 
-  ;; 開発環境を整える
-  (load "init-ide")
 
-  ;; web周りを整える
-  ;(load "init-web")
-  )
+;; (when (>= emacs-major-version 24)
+;;   (when (>= emacs-minor-version 4)
+;;     (setq load-prefer-newer t))
+;;   ;; 設定に必要なパッケージのインストール
+;;   (load "install-package")
+;;   (require 'compile)
+;;   ;; 見た目の設定をする
+
+;;   ;; 便利設定をまとめて読み込む
+(load "init-utils")
+
+;;   ;; shellの設定
+;;   (load "init-shell")
+
+;; 開発環境を整える
+(load "init-ide")
+;;   )
 
 ;; 通常のkey割り当てを変更する
 (load "init-keymap")

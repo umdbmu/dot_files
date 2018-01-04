@@ -8,8 +8,10 @@
 (global-auto-revert-mode 1)
 
 ;; 同名ファイルのバッファ名の識別文字列を変更する
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(use-package uniquify
+  :init
+  (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
+;; (require 'uniquify)
 
 ;; helmの設定
 ;; (when (require 'helm-config nil t)
@@ -59,23 +61,26 @@
 	    backup-directory-alist))
 
 ;; popwinの設定
-(require 'popwin)
-(popwin-mode nil)
+;; (require 'popwin)
+;; (use-package popwin
+;;   :init
+;;   ((push '("*Buffer List*" :position left :width 50) popwin:special-display-config)
+;;    (push '("*dvi-preview") popwin:special-display-config)
+;;    (push '("*multi-term*" :position bottom :width 50) popwin:special-display-config)
+;;    (push '(":home" :position left :width 50) popwin:special-display-config)
+;;    (push '("*YaTeX-typesetting*" :position left :width 50) popwin:special-display-config)
+;;    (push '("*Backtrace*" :height 14 :position bottom :noselect t) popwin:special-display-config)
+;;    (push '(" *auto-async-byte-compile*" :height 14 :position bottom :noselect t) popwin:special-display-config)
+;;    (push '("*VC-log*" :height 10 :position bottom) popwin:special-display-config)
+;;    (push '("eproject" :height 10 :position bottom) popwin:special-display-config)
+;;    (push '("*shell-" :regexp t :position bottom) popwin:special-display-config)
+;;    (push '("*helm" :regexp t :position bottom) popwin:special-display-config)
+;;    (push '(direx:direx-mode :position left :width 50 :dedicated t) popwin:special-display-config))
+;;   :config
+;;   ((popwin-mode t)))
 ;(setq display-buffer-alist 'popwin:display-buffer)
-;(setq display-buffer-function 'popwin:display-buffer)
-(push '("*Buffer List*" :position left :width 50) popwin:special-display-config)
-(push '("*dvi-preview") popwin:special-display-config)
-(push '("*multi-term*" :position bottom :width 50) popwin:special-display-config)
-(push '(":home" :position left :width 50) popwin:special-display-config)
-(push '("*YaTeX-typesetting*" :position left :width 50) popwin:special-display-config)
-(push '("*Backtrace*" :height 14 :position bottom :noselect t) popwin:special-display-config)
-(push '(" *auto-async-byte-compile*" :height 14 :position bottom :noselect t) popwin:special-display-config)
-(push '("*VC-log*" :height 10 :position bottom) popwin:special-display-config)
-(push '("eproject" :height 10 :position bottom) popwin:special-display-config)
-					;(push '(" *auto-async-byte-compile*" :position bottom :width 50 :noselect t) popwin:special-display-config)
-(push '("*shell-" :regexp t :position bottom) popwin:special-display-config)
-(push '("*helm" :regexp t :position bottom) popwin:special-display-config)
-(push '(direx:direx-mode :position left :width 50 :dedicated t) popwin:special-display-config)
+	;(setq display-buffer-function 'popwin:display-buffer)
+
 
 ;; １行づつスクロールする
 (setq scroll-conservatively 35
@@ -89,5 +94,5 @@
     ad-do-it
     (setq indent-tabs-mode old-indent-tabs-mode)))
 
-(require 'sequential-command-config)
-(sequential-command-setup-keys)
+;; (use-package sequential-command
+;;   :config ((sequential-command-setup-keys)))
