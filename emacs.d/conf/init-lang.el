@@ -7,18 +7,21 @@
 ;; Markdown ;;
  ;;;;;;;;;;;;;;
 ;; .mkファイルをmarkdown-modeで開く
-(setq auto-mode-alist
-      (cons '("\\.mk?d$" . markdown-mode) auto-mode-alist))
-;; (add-hook 'markdown-mode-hook 'flyspell-mode)
-;; Marked でmarkdownファイルをプレビューする (Mac OSX時)
-(custom-set-faces
+(use-package markdown-mode
+  :mode "\\.mk\\'"
+  :interpreter "markdown"
+  :config (custom-set-faces
  '(markdown-header-face-1 ((t (:inherit org-level-1))))
  '(markdown-header-face-2 ((t (:inherit org-level-2))))
  '(markdown-header-face-3 ((t (:inherit org-level-3))))
  '(markdown-header-face-4 ((t (:inherit org-level-4))))
  '(markdown-header-face-5 ((t (:inherit org-level-5))))
- '(markdown-header-face-6 ((t (:inherit org-level-6))))
-)
+ '(markdown-header-face-6 ((t (:inherit org-level-6))))))
+;; (setq auto-mode-alist
+;;       (cons '("\\.mk?d$" . markdown-mode) auto-mode-alist))
+;; (add-hook 'markdown-mode-hook 'flyspell-mode)
+;; Marked でmarkdownファイルをプレビューする (Mac OSX時)
+
 ;;;;;;;;;
 ;; org ;;
 ;;;;;;;;;
@@ -37,9 +40,9 @@
       '(("t" "Todo" entry (file+headline "~/wiki/tasks/inbox.org" "Inbox") "* TODO %?\n %i\n %a")
 	("h" "Hirameki" entry (file+headline "~/wiki/tasks/inbox.org" "Hirameki") "* HIRAMEKi %?\n %i\n %a")
 	("b" "Bookmark" entry (file+headline "~/wiki/tasks/inbox.org" "Bookmark") "* Bookmark %?\n %i\n %a")))
-(require 'open-junk-file)
-(setq open-junk-file-format "~/wiki/junk/%Y-%m-%d-daily.org")
-(global-set-key "\C-xj" 'open-junk-file)
+;; (require 'open-junk-file)
+;; (setq open-junk-file-format "~/wiki/junk/%Y-%m-%d-daily.org")
+;; (global-set-key "\C-xj" 'open-junk-file)
 
 (setq org-agenda-skip-deadline-if-done t)
 (setq org-agenda-skip-scheduled-if-done t)
@@ -67,7 +70,7 @@
       (concat str " ")))) ;end e.g can be ">"
 
 (advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
-(global-set-key "\C-xj" 'open-junk-file)
+;; (global-set-key "\C-xj" 'open-junk-file)
 
 (setq org-agenda-skip-deadline-if-done nil)
 (setq org-agenda-skip-scheduled-if-done nil)
@@ -145,5 +148,7 @@
 ;; (global-set-key (kbd "C-c c") 'smart-compile)
 
 ;; elファイル保存時にauto-async-byte-compileを実行する
-(require 'auto-async-byte-compile)
-(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
+;; (require 'auto-async-byte-compile)
+;; (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
+
+(use-package docker-compose-mode)

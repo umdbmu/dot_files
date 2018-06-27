@@ -9,7 +9,8 @@
   (helm-mode t))
 
 (use-package helm-cmd-t
-  :bind (("C-x g" . helm-cmd-t-grep)))
+  :bind (("C-x g" . helm-cmd-t-grep)
+         ("C-x C-b" . helm-C-x-b)))
 
 ;; ; (global-set-key (kbd "C-x C-b") 'helm-C-x-b)
 ;; (add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
@@ -124,4 +125,4 @@
 ;; )
 
 ;; 各種言語の設定を行う
-;; (load "init-lang")
+(load "init-lang")

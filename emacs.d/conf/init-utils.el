@@ -8,11 +8,11 @@
 (global-auto-revert-mode 1)
 
 ;; 同名ファイルのバッファ名の識別文字列を変更する
-(use-package uniquify
-  :init
-  (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
-;; (require 'uniquify)
-
+;; (use-package uniquify
+;;   :init
+;;   (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 ;; helmの設定
 ;; (when (require 'helm-config nil t)
 ;;   (global-set-key (kbd "C-x C-b") 'helm-mini)
