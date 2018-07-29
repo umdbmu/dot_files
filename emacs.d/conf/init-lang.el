@@ -1,26 +1,11 @@
-;;;;;;;
-;; c ;;
-;;;;;;;
-;; (load "init-cc")
-
- ;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
 ;; Markdown ;;
- ;;;;;;;;;;;;;;
-;; .mkファイルをmarkdown-modeで開く
+;;;;;;;;;;;;;;
 (use-package markdown-mode
-  :mode "\\.mk\\'"
-  :interpreter "markdown"
-  :config (custom-set-faces
- '(markdown-header-face-1 ((t (:inherit org-level-1))))
- '(markdown-header-face-2 ((t (:inherit org-level-2))))
- '(markdown-header-face-3 ((t (:inherit org-level-3))))
- '(markdown-header-face-4 ((t (:inherit org-level-4))))
- '(markdown-header-face-5 ((t (:inherit org-level-5))))
- '(markdown-header-face-6 ((t (:inherit org-level-6))))))
-;; (setq auto-mode-alist
-;;       (cons '("\\.mk?d$" . markdown-mode) auto-mode-alist))
-;; (add-hook 'markdown-mode-hook 'flyspell-mode)
-;; Marked でmarkdownファイルをプレビューする (Mac OSX時)
+  :ensure t
+  :commands (markdown-mode grm-mode)
+  :mode ("\\.mk\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
 
 ;;;;;;;;;
 ;; org ;;
