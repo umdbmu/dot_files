@@ -13,11 +13,11 @@
 '(hl-line ((t (:background "color-236")))))
 
 ;; 対応する括弧のハイライト
-(setq show-paren-mode-delay 0)
-(show-paren-mode t)
+;; (setq show-paren-mode-delay 0)
+;; (show-paren-mode t)
 ;; parenのスタイル
-(setq show-paren-style 'expression)
-(set-face-background 'show-paren-match-face "NavyBlue")
+;; (setq show-paren-style 'expression)
+;; (set-face-background 'show-paren-match-face "NavyBlue")
 
 ;(setq hi-line-face '((:background "NavyBlue" t)(t(:bold t))))
 (global-hl-line-mode t)
@@ -72,7 +72,7 @@
 (which-function-mode 1)
 
 ;; powerlineを利用する
-(load "init-powerline")
+;; (load "init-powerline")
 
 ;;; modeの名前を自分で再定義
 (defvar mode-line-cleaner-alist
@@ -98,15 +98,15 @@
     (emacs-lisp-mode . "El")
     (markdown-mode . "Md")))
 
-(defun clean-mode-line ()
-  (interactive)
-  (loop for (mode . mode-str) in mode-line-cleaner-alist
-	do
-	(let ((old-mode-str (cdr (assq mode minor-mode-alist))))
-	  (when old-mode-str
-	    (setcar old-mode-str mode-str))
-	  ;; major mode
-	  (when (eq mode major-mode)
-	    (setq mode-name mode-str)))))
+;; (defun clean-mode-line ()
+;;   (interactive)
+;;   (loop for (mode . mode-str) in mode-line-cleaner-alist
+;; 	do
+;; 	(let ((old-mode-str (cdr (assq mode minor-mode-alist))))
+;; 	  (when old-mode-str
+;; 	    (setcar old-mode-str mode-str))
+;; 	  ;; major mode
+;; 	  (when (eq mode major-mode)
+;; 	    (setq mode-name mode-str)))))
 
-(add-hook 'after-change-major-mode-hook 'clean-mode-line)
+;; (add-hook 'after-change-major-mode-hook 'clean-mode-line)

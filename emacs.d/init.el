@@ -2,8 +2,6 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(package-initialize)
-
 (when (> emacs-major-version 23)
   (defvar user-emacs-directory "~/.emacs.d/"))
 ;;load-path を追加する関数を定義
@@ -30,7 +28,7 @@
   ;; 便利設定をまとめて読み込む
   (load "init-utils")
 
-  ;; shellの設定
+   ;; shellの設定
   ; (load "init-shell")
 
   ;; 入力関係
@@ -52,20 +50,6 @@
   (setq locale-coding-system 'cp932))
 
 
-'(anzu-deactivate-region t)
-'(anzu-mode-lighter "")
-'(anzu-replace-to-string-separator " => ")
-'(anzu-search-threshold 1000)
-'(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
-'(custom-enabled-themes (quote (hc-zenburn)))
-'(custom-safe-themes (quote ("4217c670c803e8a831797ccf51c7e6f3a9e102cb9345e3662cc449f4c194ed7d" "9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" "146d24de1bb61ddfa64062c29b5ff57065552a7c4019bee5d869e938782dfc2a" "dc77fb4e02417a6a932599168bd61927f6f2fe4fe3dbc4e4086a0bfb25babd67" default)))
-'(js2-basic-offset 2)
-'(js2-bounce-indent-p nil)
-'(org-agenda-files (quote ("/GTD/inbox.org" "/GTD/tasks.org")))
-'(shell-pop-window-height 25)
-'(shell-pop-window-position "bottom")
-(put 'downcase-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -74,12 +58,17 @@
  '(anzu-deactivate-region t)
  '(anzu-replace-to-string-separator " => ")
  '(anzu-search-threshold 1000)
- '(custom-safe-themes
+ '(package-selected-packages
    (quote
-    ("4e753673a37c71b07e3026be75dc6af3efbac5ce335f3707b7d6a110ecb636a3" default))))
+    (zenburn-theme yascroll smartparens sequential-command pos-tip popwin open-junk-file magit helm-cmd-t helm git-gutter fuzzy elscreen direx buffer-move auto-complete auto-async-byte-compile anzu))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(hl-line ((t (:background "color-236")))))
+ '(markdown-header-face-1 ((t (:inherit org-level-1))))
+ '(markdown-header-face-2 ((t (:inherit org-level-2))))
+ '(markdown-header-face-3 ((t (:inherit org-level-3))))
+ '(markdown-header-face-4 ((t (:inherit org-level-4))))
+ '(markdown-header-face-5 ((t (:inherit org-level-5))))
+ '(markdown-header-face-6 ((t (:inherit org-level-6)))))

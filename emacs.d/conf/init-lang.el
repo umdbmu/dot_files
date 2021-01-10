@@ -103,6 +103,17 @@
                 (org-agenda-clockreport-mode t))))
 (advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
 
+;(require 'org-icalendar)
+;(define-key org-mode-map (kbd "C-c 1") 'my-org-export-icalendar)
+;(setq org-icalendar-combined-description "OrgModeのスケジュール出力")
+;(setq org-icalendar-timezone nil)
+;; DONE になった TODO は出力対象から除外する
+;(setq org-icalendar-include-todo t)
+;; （通常は，<>--<> で区間付き予定をつくる．非改行入力で日付がNoteに入らない）
+;(setq org-icalendar-use-scheduled '(event-if-todo))
+;; DL 付きで終日予定にする：締め切り日（スタンプで時間を指定しないこと）
+;(setq org-icalendar-use-deadline '(event-if-todo))
+
 (defvar growl-program "growlnotify")
 (defvar growl-notify-icon (concat data-directory "images/icons/hicolor/128x128/apps/emacs.png"))
 (defvar growl-notify-application-name "Emacs")
@@ -145,5 +156,5 @@
 ;; (global-set-key (kbd "C-c c") 'smart-compile)
 
 ;; elファイル保存時にauto-async-byte-compileを実行する
-(require 'auto-async-byte-compile)
-(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
+;; (require 'auto-async-byte-compile)
+;; (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)

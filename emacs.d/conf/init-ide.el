@@ -86,16 +86,16 @@
 ;; (smartparens-global-mode t)
 
 ;; 拡張版diredを使用する
-(require 'direx)
-(require 'direx-project)
-(defun direx:jump-to-project-directory ()
-  (interactive)
-  (let ((result (ignore-errors
-                  (direx-project:jump-to-project-root-other-window)
-                  t)))
-    (unless result
-      (direx:jump-to-directory-other-window))))
-(global-set-key (kbd "C-x C-d") 'direx:jump-to-project-directory)
+;; (require 'direx)
+;; (require 'direx-project)
+;; (defun direx:jump-to-project-directory ()
+;;   (interactive)
+;;   (let ((result (ignore-errors
+;;                   (direx-project:jump-to-project-root-other-window)
+;;                   t)))
+;;     (unless result
+;;       (direx:jump-to-directory-other-window))))
+;; (global-set-key (kbd "C-x C-d") 'direx:jump-to-project-directory)
 
 ;; anzu-mode
 (global-anzu-mode t)

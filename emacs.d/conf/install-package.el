@@ -1,13 +1,32 @@
 ;; package.elの設定
-(when (require 'package nil t)
-  ;; パッケージリポジトリにMarmaladeqと開発者運営のELPAを追加
-  ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-  ; (add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-  ;; インストールしたパッケージにロードパスを通して読み込む
-  (package-initialize))
+(require 'package)
+(setq package-archives
+      '(("melpa" . "https://melpa.org/packages/")
+        ;; ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ("org" . "https://orgmode.org/elpa/")
+        ("gnu" . "https://elpa.gnu.org/packages/")))
+(package-initialize)
 
-(require 'cl)
+(package-refresh-contents)
+(defvar my/favorite-packages
+  '(
+    ;; for auto-complete
+    auto-complete fuzzy popup pos-tip
+		  ;; buffer utils
+		  popwin yascroll buffer-move anzu
+
+		  ;; helm
+		  helm
+
+		  ;; git
+		  magit git-gutter
+
+		  open-junk-file zenburn-theme
+		  ))
+
+(dolist (package my/favorite-packages)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 (defvar installing-package-list
     '(
@@ -21,7 +40,6 @@
       anzu
       smartparens
       direx
-      lib-requires
       popwin
       shell-pop
       auto-complete
@@ -29,12 +47,5 @@
       powerline
       markdown-mode
       open-junk-file
-  ))
-
-(let ((not-installed (loop for x in installing-package-list
-			   when (not (package-installed-p x))
-			   collect x)))
-  (when not-installed
-    (package-refresh-contents)
-    (dolist (pkg not-installed)
-      (package-install pkg))))
+  )
+)
